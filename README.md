@@ -5,6 +5,12 @@
 
 ### Uso
 
-1. `$ npm install`
-2. `$ npm start`
-3. `$ gulp`
+1. $ npm install
+2. $ gulp
+3. $ npm start
+
+### TODO
+
+* Mejorar el CSS.
+* Encriptar claves al crear usuarios.
+* Crear validaciones de registro de usuarios.

@@ -1,0 +1,14 @@
+@import "palette";
+
+.ng-dirty.ng-invalid {
+  border-color: $invalid-color;
+}
+
+.ng-dirty.ng-valid {
+  border-color: $valid-color;
+}
+
+.right-align {
+  display: flex;
+  justify-content: flex-end;
+}
