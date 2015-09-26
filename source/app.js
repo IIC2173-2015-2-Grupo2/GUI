@@ -9,12 +9,40 @@
     $routeProvider
       .when('/', {
         controller: 'SimpleController',
-        templateUrl: './source/templates/welcome.html',
+        templateUrl: 'source/templates/welcome.html',
       })
       .when('/home', {
         controller: 'SimpleController',
-        templateUrl: './source/templates/home.html',
+        templateUrl: 'source/templates/home.html',
       })
       .otherwise({redirectTo: '/' });
   });
+
+  app.directive('appNavbar', appNavbar)
+
+  function appNavbar() {
+    var directive = {
+      restrict: 'E',
+      templateUrl: 'source/templates/shared/navbar.html',
+      controller: navbarController,
+      controllerAs: 'navbarCtrl'
+    };
+
+    return directive;
+  };
+
+  function navbarController($http) {
+    this.session = {};
+
+    this.login = function() {
+      console.log('hola');
+      $http.post('#', this.session)
+           .success(function() {
+             alert('success!');
+           })
+           .error(function() {
+             alert('fail!');
+           });
+    };
+  };
 })();
