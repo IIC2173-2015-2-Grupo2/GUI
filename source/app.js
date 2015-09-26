@@ -32,18 +32,20 @@
   };
 
   function navbarController($http, $window) {
-    this.session = {};
+    var vm = this;
+    vm.session = {};
 
     this.login = function() {
-      console.log('hola');
       $http.post('#', this.session)
            .success(function() {
              alert('success!');
+             vm.session = {};
              $window.location.href = '/#/home';
            })
            .error(function() {
              alert('fail!');
-             $window.location.href = '/#/welcome';
+             vm.session = {};
+             $window.location.href = '/#/';
            });
     };
   };
