@@ -31,7 +31,7 @@
     return directive;
   };
 
-  function navbarController($http) {
+  function navbarController($http, $window) {
     this.session = {};
 
     this.login = function() {
@@ -42,6 +42,7 @@
            })
            .error(function() {
              alert('fail!');
+             $window.location.href = '/#/home';
            });
     };
   };

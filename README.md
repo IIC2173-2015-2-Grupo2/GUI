@@ -8,9 +8,3 @@
 1. $ npm install
 2. $ gulp
 3. $ npm start
-
-### TODO
-
-* Mejorar el CSS.
-* Encriptar claves al crear usuarios.
-* Crear validaciones de registro de usuarios.
