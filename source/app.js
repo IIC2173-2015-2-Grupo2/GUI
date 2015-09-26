@@ -9,11 +9,11 @@
     $routeProvider
       .when('/', {
         controller: 'SimpleController',
-        templateUrl: './src/templates/welcome.html',
+        templateUrl: './source/templates/welcome.html',
       })
       .when('/home', {
         controller: 'SimpleController',
-        templateUrl: './src/templates/home.html',
+        templateUrl: './source/templates/home.html',
       })
       .otherwise({redirectTo: '/' });
   });

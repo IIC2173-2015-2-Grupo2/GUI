@@ -1,0 +1,30 @@
+{
+  "name": "newsify",
+  "version": "0.1.0",
+  "description": "Worldwide news provider GUI",
+  "scripts": {
+    "start": "python3 -m http.server",
+    "build": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IIC2173-2015-2-Grupo2/GUI.git"
+  },
+  "keywords": [
+    "angular",
+    "bootstrap"
+  ],
+  "author": "Sebastián Salata <SA.SalataRT@GMail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/IIC2173-2015-2-Grupo2/GUI/issues"
+  },
+  "homepage": "https://github.com/IIC2173-2015-2-Grupo2/GUI#readme",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-jshint": "^1.11.2",
+    "gulp-sass": "^2.0.4",
+    "gulp-util": "^3.0.6",
+    "jshint-stylish": "^2.0.1"
+  }
+}
