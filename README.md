@@ -1,4 +1,6 @@
 # GUI
+[![Build Status](https://travis-ci.org/IIC2173-2015-2-Grupo2/GUI.svg)](https://travis-ci.org/IIC2173-2015-2-Grupo2/GUI)
+
 ### Framework: AngularJS ([Guía de Estilo](https://github.com/johnpapa/angular-styleguide))
 
 > Integrantes Entrega 1: [Sebastián Salata](mailto:sasalata@uc.cl), [Diego Steinsapir](mailto:dasteinsapir@uc.cl), [Ignacio Ferreira](ifferreira@uc.cl)
