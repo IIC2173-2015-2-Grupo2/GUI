@@ -39,10 +39,11 @@
       $http.post('#', this.session)
            .success(function() {
              alert('success!');
+             $window.location.href = '/#/home';
            })
            .error(function() {
              alert('fail!');
-             $window.location.href = '/#/home';
+             $window.location.href = '/#/welcome';
            });
     };
   };
