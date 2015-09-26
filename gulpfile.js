@@ -3,7 +3,10 @@ var gulp   = require('gulp'),
     sass   = require('gulp-sass');
 
 // define the default task and add the watch task to it
-gulp.task('default', ['watch']);
+gulp.task('default', ['build', 'watch']);
+
+// build task, it must group all related tasks
+gulp.task('build', ['jshint', 'build-css']);
 
 // configure the jshint task
 gulp.task('jshint', function() {
