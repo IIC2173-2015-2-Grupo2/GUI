@@ -6,7 +6,6 @@
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular-route.min.js"></script>
     <link rel="stylesheet" href="//bootswatch.com/united/bootstrap.min.css">
-    <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="/public/assets/stylesheets/application.css">
   </head>
   <body>
@@ -15,7 +14,12 @@
     <div ng-view class="container"></div>
 
     <script type="text/javascript" src="source/app.js"></script>
-    <script type="text/javascript" src="source/modules/users.js"></script>
+    <script type="text/javascript" src="source/router.js"></script>
+    <script type="text/javascript" src="source/controllers/simpleCtrl.js"></script>
+    <script type="text/javascript" src="source/directives/userSignup.directive.js"></script>
+    <script type="text/javascript" src="source/directives/navbar.directive.js"></script>
+    <script type="text/javascript" src="source/services/signupService.js"></script>
+    <script type="text/javascript" src="source/services/loginService.js"></script>
     <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   </body>
