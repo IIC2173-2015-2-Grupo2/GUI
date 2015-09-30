@@ -1,4 +1,5 @@
-<nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-default" role="navigation"
+     ng-controller="appController as appCtrl">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
@@ -17,7 +18,8 @@
 
       <form name="loginForm" class="navbar-form navbar-right"
             ng-submit="loginForm.$valid && navbarCtrl.login()"
-            ng-if="true" novalidate>
+            ng-if="!appCtrl.loggedIn()"
+            novalidate>
         <div class="form-group">
           <input type="email" class="form-control" id="login-email" placeholder="e-mail"
                  ng-model="navbarCtrl.session.email" required />
@@ -31,6 +33,12 @@
                 ng-disabled="!loginForm.$valid">
                 Entrar
         </button>
+      </form>
+
+      <form name="logoutForm" class="navbar-form navbar-right"
+            ng-submit="navbarCtrl.logout()"
+            ng-if="appCtrl.loggedIn()">
+            <button type="submit" class="btn btn-primary">Salir</button>
       </form>
     </div>
   </div>

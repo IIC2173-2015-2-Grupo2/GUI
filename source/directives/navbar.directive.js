@@ -24,6 +24,10 @@
     vm.login = function() {
       sessionService.login(vm.session);
       vm.session = {};
-    }
+    };
+
+    vm.logout = function() {
+      sessionService.logout();
+    };
   };
 })();

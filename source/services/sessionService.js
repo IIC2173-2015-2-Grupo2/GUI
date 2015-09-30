@@ -9,7 +9,9 @@
     self.sessionStorage = $sessionStorage;
 
     self.login = function(userForm) {
-      if (self.sessionStorage.currentUser.email === userForm.email && self.sessionStorage.currentUser.password === userForm.password) {
+      if (self.sessionStorage.currentUser !== undefined &&
+          self.sessionStorage.currentUser.email === userForm.email &&
+          self.sessionStorage.currentUser.password === userForm.password) {
         $window.location.href = '/#/home';
       } else {
         $window.location.href = '/#/';
@@ -26,6 +28,15 @@
              alert('fail!');
              $window.location.href = '/#/';
            }); */
+    };
+
+    self.logout = function() {
+      self.sessionStorage.$reset();
+      $window.location.href = '/#/';
+    };
+
+    self.loggedIn = function() {
+      return (self.sessionStorage.currentUser !== undefined);
     };
   }
 })();
