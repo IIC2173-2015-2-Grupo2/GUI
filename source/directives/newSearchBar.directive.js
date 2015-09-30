@@ -22,7 +22,6 @@
     vm.search = {};
 
     vm.submit = function() {
-      alert('Hola!');
       searchService.browse(vm.search);
       vm.search = {};
     }
