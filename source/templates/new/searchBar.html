@@ -1,0 +1,6 @@
+<form name="searchForm" ng-submit="searchForm.$valid && searchBarCtrl.submit()" role="search" novalidate>
+  <div class="form-group">
+    <input type="text" class="form-control" id="search" placeholder="Buscar noticias..." ng-model="searchBarCtrl.search.content" required>
+  </div>
+  <button class="btn btn-default" type="submit">Buscar</button>
+</form>
