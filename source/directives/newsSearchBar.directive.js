@@ -7,7 +7,7 @@
   function searchBar() {
     var directive = {
       restrict: 'E',
-      templateUrl: '/source/templates/new/searchBar.html',
+      templateUrl: '/source/templates/news/searchBar.html',
       controller: searchBarController,
       controllerAs: 'searchBarCtrl'
     };
@@ -18,7 +18,6 @@
   searchBarController.$inject = ['searchService'];
 
   function searchBarController(searchService) {
-    alert('hola!');
     var vm = this;
     vm.search = {};
 
