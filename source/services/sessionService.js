@@ -19,7 +19,7 @@
 
       userForm = {};
 
-      /*$http.post('#', userForm)
+      /*$ $http.post('#', userForm)
            .success(function() {
              alert('success!');
              $window.location.href = '/#/home';
@@ -27,7 +27,7 @@
            .error(function() {
              alert('fail!');
              $window.location.href = '/#/';
-           }); */
+           });*/
     };
 
     self.logout = function() {
