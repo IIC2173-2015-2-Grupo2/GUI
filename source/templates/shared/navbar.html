@@ -12,7 +12,7 @@
 
     <div class="collapse navbar-collapse" id="navbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="/#/">Home</a></li>
+        <li class="active"><a href="/#/home">Newsify</a></li>
       </ul>
 
       <form name="loginForm" class="navbar-form navbar-right"
@@ -26,7 +26,11 @@
           <input type="password" class="form-control" placeholder="password"
                  ng-model="navbarCtrl.session.password" required />
         </div>
-        <button type="submit" class="btn btn-sm btn-primary">Entrar</button>
+
+        <button type="submit" class="btn btn-sm btn-primary"
+                ng-disabled="!loginForm.$valid">
+                Entrar
+        </button>
       </form>
     </div>
   </div>

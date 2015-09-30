@@ -5,14 +5,14 @@
          .directive('userSignup', userSignup);
 
   function userSignup() {
-   var directive = {
+    var directive = {
      restrict: 'E',
      templateUrl: '/source/templates/userSignup.html',
      controller: signupController,
      controllerAs: 'signupCtrl'
-   };
+    };
 
-   return directive;
+    return directive;
   }
 
   signupController.$inject = ['signupService'];

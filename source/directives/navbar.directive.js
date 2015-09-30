@@ -15,14 +15,14 @@
     return directive;
   };
 
-  navbarController.$inject = ['loginService'];
+  navbarController.$inject = ['sessionService'];
 
-  function navbarController(loginService) {
+  function navbarController(sessionService) {
     var vm = this;
     vm.session = {};
 
     vm.login = function() {
-      loginService.login(vm.session);
+      sessionService.login(vm.session);
       vm.session = {};
     }
   };

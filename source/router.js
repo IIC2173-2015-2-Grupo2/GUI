@@ -4,11 +4,13 @@
   function router($routeProvider) {
     $routeProvider
       .when('/', {
-        controller: 'SimpleController',
+        controller: 'appController',
+        controllerAs: 'appCtrl',
         templateUrl: 'source/templates/welcome.html',
       })
       .when('/home', {
-        controller: 'SimpleController',
+        controller: 'appController',
+        controllerAs: 'appCtrl',
         templateUrl: 'source/templates/home.html',
       })
       .otherwise({redirectTo: '/' });

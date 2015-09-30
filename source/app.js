@@ -1,4 +1,4 @@
 (function(){
-  angular.module('app', ['ngRoute', 'users']);
-  angular.module('users', []);
+  angular.module('app', ['ngRoute', 'ngStorage', 'users']);
+  angular.module('users', ['ngStorage']);
 })();

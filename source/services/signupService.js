@@ -4,11 +4,13 @@
   angular.module('users')
          .service('signupService', signupService);
 
-  function signupService($http, $window) {
+  function signupService($http, $window, $sessionStorage) {
     var self = this;
 
     self.signup = function(userForm) {
-      $http.post('#', userForm)
+      $sessionStorage.currentUser = userForm;
+
+      /* $http.post('#', userForm)
            .success(function() {
              alert('success!');
              $window.location.href = '/#/home';
@@ -16,7 +18,7 @@
            .error(function() {
              alert('fail!');
              $window.location.href = '/#/';
-           });
+           }); */
     };
   }
 })();
