@@ -7,7 +7,7 @@
   function newsDisplay() {
     var directive = {
       restrict: 'E',
-      templateUrl: '/source/templates/new/newsDisplay.html',
+      templateUrl: '/source/templates/news/newsDisplay.html',
       controller: newsDisplayController,
       controllerAs: 'newsDisplayCtrl'
     };

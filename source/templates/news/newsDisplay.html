@@ -10,7 +10,7 @@
         <div class="source">
           ref. {{article.source}}
         </div>
-        <h2>{{ article.title }}</h2>
+        <h2>{{ article.title | limitTo:22:'...'}}{{article.title.length > 22 ? '...' : ''}}</h2>
         <p>{{ article.review }}</p>
       </div>
       <div class="tags">

@@ -18,6 +18,7 @@
   searchBarController.$inject = ['searchService'];
 
   function searchBarController(searchService) {
+    alert('hola!');
     var vm = this;
     vm.search = {};
 
