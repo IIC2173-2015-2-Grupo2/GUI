@@ -4,19 +4,19 @@
       <div class="date right-align">
         {{ article.date }}
       </div>
-      <img src="http://www.ugodog.net/blog/wp-content/uploads/2008/08/beagles-buddy.thumbnail.jpg" 
+      <img src="http://www.ugodog.net/blog/wp-content/uploads/2008/08/beagles-buddy.thumbnail.jpg"
           alt="...">
       <div class="caption">
         <div class="source">
           ref. {{article.source}}
         </div>
-        <h2>{{ article.title | limitTo:22:'...'}}{{article.title.length > 22 ? '...' : ''}}</h2>
+        <h2>{{ article.title | limitTo:22:'...' }}{{ article.title.length > 22 ? '...' : '' }}</h2>
         <p>{{ article.review }}</p>
       </div>
       <div class="tags">
         <span class="tag label label-info" ng-repeat="tag in article.tags">
           {{ tag.name }}
-        </span> 
+        </span>
       </div>
     </div>
   </div>

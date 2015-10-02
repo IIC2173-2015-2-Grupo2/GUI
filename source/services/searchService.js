@@ -7,20 +7,21 @@
   function searchService($http, $window, $localStorage) {
     var self = this;
     self.localStorage = $localStorage;
+
     self.browse = function(search) {
-      
       this.article = {
         title: search.content,
-        review: 'Loren ipsu etc',
+        review: 'Lorem ipsum etc',
         url: 'http://www.noticia.cl',
         date: '30/09/2015',
-        source: 'El mercurio',
+        source: 'El Mercurio',
         tags: [
           {name: 'perritos'},
-          {name: 'animales'}, 
+          {name: 'animales'},
           {name: 'mamiferos'}
         ]
       };
+
       if(!self.localStorage.news){
         self.localStorage.news = [];
       }
@@ -37,6 +38,5 @@
              alert('fail!');
            });*/
     };
-    
   }
 })();

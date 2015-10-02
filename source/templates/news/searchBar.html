@@ -1,6 +1,12 @@
-<form name="searchForm" ng-submit="searchForm.$valid && searchBarCtrl.submit()" role="search" novalidate>
+<form name="searchForm" role="search"
+      ng-submit="searchForm.$valid && searchBarCtrl.submit()" novalidate>
+
   <div class="form-group">
-    <input type="text" class="form-control" id="search" placeholder="Buscar noticias..." ng-model="searchBarCtrl.search.content" required>
+    <input type="text" class="form-control" id="search" placeholder="Buscar noticias..."
+           ng-model="searchBarCtrl.search.content" required />
   </div>
-  <button class="btn btn-default" type="submit">Buscar</button>
+  <button type="submit" class="btn btn-default"
+          ng-disabled="!searchForm.$valid">
+          Buscar
+  </button>
 </form>
