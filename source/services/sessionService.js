@@ -6,13 +6,21 @@
 
   function sessionService($http, $window, $sessionStorage) {
     var self = this;
-    self.sessionStorage = $sessionStorage;
+
+    if ($sessionStorage.users === undefined) {
+      $sessionStorage.users = [];
+    }
 
     self.login = function(userForm) {
-      if (self.sessionStorage.currentUser !== undefined &&
-          self.sessionStorage.currentUser.email === userForm.email &&
-          self.sessionStorage.currentUser.password === userForm.password) {
-        $window.location.href = '/#/home';
+      if ($sessionStorage.users !== undefined) {
+          $sessionStorage.users.forEach(function(user) {
+            if (user.email === userForm.email && user.password === userForm.password) {
+              $sessionStorage.currentUser = user;
+              $window.location.href = '/#/home';
+              return;
+            }
+          });
+        $window.location.href = '/#/';
       } else {
         $window.location.href = '/#/';
       }
@@ -31,12 +39,16 @@
     };
 
     self.logout = function() {
-      self.sessionStorage.$reset();
+      delete $sessionStorage.currentUser;
       $window.location.href = '/#/';
     };
 
     self.loggedIn = function() {
-      return (self.sessionStorage.currentUser !== undefined);
+      return ($sessionStorage.currentUser !== undefined);
     };
+
+    self.currentUser = function() {
+      return $sessionStorage.currentUser;
+    }
   }
 })();
