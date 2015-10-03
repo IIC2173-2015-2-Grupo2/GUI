@@ -9,5 +9,9 @@
     vm.loggedIn = function() {
       return sessionService.loggedIn();
     };
+
+    vm.currentUser = function() {
+      return sessionService.currentUser();
+    }
   };
 })();

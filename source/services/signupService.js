@@ -8,6 +8,7 @@
     var self = this;
 
     self.signup = function(userForm) {
+      $sessionStorage.users.push(userForm);
       $sessionStorage.currentUser = userForm;
 
       /* $http.post('#', userForm)

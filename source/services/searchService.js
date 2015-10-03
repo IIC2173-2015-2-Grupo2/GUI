@@ -7,6 +7,7 @@
   function searchService($http, $window, $localStorage) {
     var self = this;
     self.localStorage = $localStorage;
+
     self.browse = function(search) {
       alert('buscando: ' + search.content);
       $window.location.href = '/#/home';
@@ -21,6 +22,5 @@
              alert('fail!');
            });*/
     };
-    
   }
 })();

@@ -10,7 +10,7 @@
 
     self.getNews = function() {
       return self.news;
-      
+
       /* $http.get('#', '')
            .success(function(data) {
              alert("Success!");
@@ -20,6 +20,5 @@
              alert('fail!');
            });*/
     };
-    
   }
 })();
