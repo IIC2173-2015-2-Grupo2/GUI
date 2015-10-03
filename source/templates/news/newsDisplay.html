@@ -2,9 +2,9 @@
   <div class="col-sm-6 col-md-4"  ng-repeat="article in newsDisplayCtrl.news">
     <div class="article thumbnail">
       <div class="date right-align">
-        {{ article.date }}
+        {{ new Date(article.date) | date }}
       </div>
-      <img src="http://www.ugodog.net/blog/wp-content/uploads/2008/08/beagles-buddy.thumbnail.jpg" 
+      <img ng-src={{article.image}} 
           alt="...">
       <div class="caption">
         <div class="source">
