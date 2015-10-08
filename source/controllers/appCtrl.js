@@ -1,4 +1,6 @@
 (function(){
+  'use strict';
+
   angular.module('app')
          .controller('appController', appController);
 
@@ -12,6 +14,6 @@
 
     vm.currentUser = function() {
       return sessionService.currentUser();
-    }
+    };
   };
 })();
