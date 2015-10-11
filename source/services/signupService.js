@@ -18,7 +18,8 @@
         }).success(function(data, textStatus, xhr) {
             // console.log(data.token);
             $('#signup-modal').modal('hide');
-            $sessionStorage.currentUser = { 'password' : userForm.password,
+            $sessionStorage.currentUser = { 'username' : userForm.username,
+                                            'password' : userForm.password,
                                             'token' : data.token };
             $window.location.href = '/#/home';
         }).error(function(data, textStatus, xhr) {

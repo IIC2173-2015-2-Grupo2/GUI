@@ -14,7 +14,9 @@
     <div class="collapse navbar-collapse" id="navbar">
       <div class="center-align-space-between">
         <ul class="nav navbar-nav">
-          <li class="active fredericka-font"><a href="/#/home">Newsify</a></li>
+          <li class="active fredericka-font">
+            <a href="/#/home"><i class="fa fa-newspaper-o"></i> Newsify</a>
+          </li>
         </ul>
 
         <div class="navbar-form"
@@ -29,17 +31,24 @@
                 novalidate>
 
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="username"
-                     ng-model="navbarCtrl.session.username" required />
+              <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                <input type="text" class="form-control" placeholder="username"
+                       ng-model="navbarCtrl.session.username" required />
+              </div>
             </div>
+
             <div class="form-group">
-              <input type="password" class="form-control" placeholder="password"
-                     ng-model="navbarCtrl.session.password" required />
+              <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-key"></i></div>
+                <input type="password" class="form-control" placeholder="password"
+                       ng-model="navbarCtrl.session.password" required />
+              </div>
             </div>
 
             <button type="submit" class="btn btn-default"
                     ng-disabled="!loginForm.$valid">
-                    Entrar
+              <i class="fa fa-sign-in"></i> Entrar
             </button>
 
             <button type="button" class="btn btn-default" data-toggle="modal" data-target="#signup-modal">
@@ -49,12 +58,18 @@
 
           <div ng-if="appCtrl.loggedIn()">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="/#/">{{appCtrl.currentUser().username}}</a></li>
+              <li class="active">
+                <a href="/#/">
+                  <i class="fa fa-user"></i> {{appCtrl.currentUser().username}}
+                </a>
+              </li>
             </ul>
 
             <form name="logoutForm" class="navbar-form navbar-right"
                   ng-submit="navbarCtrl.logout()">
-                  <button type="submit" class="btn btn-default">Salir</button>
+              <button type="submit" class="btn btn-default">
+                <i class="fa fa-sign-out"></i> Salir
+              </button>
             </form>
           </div>
         </div>
