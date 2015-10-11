@@ -36,6 +36,11 @@ html, body {
   margin-top: 75px;
 }
 
+.center-align-space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
 .center-align-space-around {
   display: flex;
   justify-content: space-around;

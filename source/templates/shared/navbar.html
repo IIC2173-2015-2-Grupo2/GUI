@@ -1,6 +1,6 @@
 <nav class="navbar navbar-default" role="navigation"
      ng-controller="appController as appCtrl">
-  <div class="container-fluid">
+  <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
         <span class="sr-only">Toggle navigation</span>
@@ -12,49 +12,51 @@
     </div>
 
     <div class="collapse navbar-collapse" id="navbar">
-      <ul class="nav navbar-nav">
-        <li class="active fredericka-font"><a href="/#/home">Newsify</a></li>
-      </ul>
+      <div class="center-align-space-between">
+        <ul class="nav navbar-nav">
+          <li class="active fredericka-font"><a href="/#/home">Newsify</a></li>
+        </ul>
 
-      <div class="navbar-form navbar-left"
-           ng-if="appCtrl.loggedIn()">
-        <search-bar></search-bar>
-      </div>
+        <div class="navbar-form"
+             ng-if="appCtrl.loggedIn()">
+          <search-bar></search-bar>
+        </div>
 
-      <div class="navbar-right">
-        <form name="loginForm" class="navbar-form"
-              ng-submit="loginForm.$valid && navbarCtrl.login()"
-              ng-if="!appCtrl.loggedIn()"
-              novalidate>
+        <div>
+          <form name="loginForm" class="navbar-form"
+                ng-submit="loginForm.$valid && navbarCtrl.login()"
+                ng-if="!appCtrl.loggedIn()"
+                novalidate>
 
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="username"
-                   ng-model="navbarCtrl.session.username" required />
-          </div>
-          <div class="form-group">
-            <input type="password" class="form-control" placeholder="password"
-                   ng-model="navbarCtrl.session.password" required />
-          </div>
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="username"
+                     ng-model="navbarCtrl.session.username" required />
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control" placeholder="password"
+                     ng-model="navbarCtrl.session.password" required />
+            </div>
 
-          <button type="submit" class="btn btn-default"
-                  ng-disabled="!loginForm.$valid">
-                  Entrar
-          </button>
+            <button type="submit" class="btn btn-default"
+                    ng-disabled="!loginForm.$valid">
+                    Entrar
+            </button>
 
-          <button type="button" class="btn btn-default" data-toggle="modal" data-target="#signup-modal">
-            Sign up
-          </button>
-        </form>
-
-        <div ng-if="appCtrl.loggedIn()">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="/#/">{{appCtrl.currentUser().username}}</a></li>
-          </ul>
-
-          <form name="logoutForm" class="navbar-form navbar-right"
-                ng-submit="navbarCtrl.logout()">
-                <button type="submit" class="btn btn-default">Salir</button>
+            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#signup-modal">
+              Sign up
+            </button>
           </form>
+
+          <div ng-if="appCtrl.loggedIn()">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="/#/">{{appCtrl.currentUser().username}}</a></li>
+            </ul>
+
+            <form name="logoutForm" class="navbar-form navbar-right"
+                  ng-submit="navbarCtrl.logout()">
+                  <button type="submit" class="btn btn-default">Salir</button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
