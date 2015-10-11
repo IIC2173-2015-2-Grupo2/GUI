@@ -4,28 +4,41 @@
   angular.module('news')
          .service('newsDisplayService', newsDisplayService);
 
-  function newsDisplayService($http, $window, $localStorage) {
+  function newsDisplayService($http, $window, $sessionStorage) {
     var self = this;
-    self.news = $localStorage.news;
-    self.tokenObject = {
-      token : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6Ik5haGkiLCJleHAiOjE0NDQ1ODk4NzZ9.pqsHBx6FQd_PUqwaIS-3NGNO-8igvqkusKwQ3VXZFCk'
-    };
 
     self.getNews = function() {
-      // return self.news;
+      if($sessionStorage.currentUser){
+        $.ajax({
+           url: 'http://arqui8.ing.puc.cl/api/v1/private/news/1',
+           type: 'GET',
+           beforeSend: function (request) {
+           request.setRequestHeader('Authorization', 'Bearer ' + $sessionStorage.currentUser.token); },
+           dataType: 'json'
+          })
+          .done(function() {
+            console.log("success");
+          })
+          .fail(function() {
+           console.log("error");
+        });
 
-
-      $http({
-        method: 'GET',
-        url: 'http://arqui8.ing.puc.cl/api/v1/private/news',
-        data: $.param(self.tokenObject),
-        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-      }).success(function(data, textStatus, xhr) {
-          console.log(data);
-          $window.location.href = '/#/home';
-      }).error(function(data, textStatus, xhr) {
-          $window.location.href = '/#/';
-      });
+        // $http({
+        //     method : 'get',
+        //     url: 'http://arqui8.ing.puc.cl/api/v1/private/news/1',
+        //     headers: {
+        //       'Authorization': 'Bearer ' + $sessionStorage.currentUser.token
+        //     }
+        //   }).success(function(data, textStatus, xhr) {
+        //       console.log(data);
+        //   }).error(function(data, textStatus, xhr) {
+        //       console.log(data);
+        //       console.log("error: get-fail");
+        //   });
+      }
+      else{
+        console.log("error: el currentUser no definido");
+      }
     };
   }
 })();
