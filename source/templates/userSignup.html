@@ -1,48 +1,46 @@
-<div class="col-md-offset-6">
-  <form name="signupForm" class="form-horizontal"
-        ng-submit="signupForm.$valid && signupCtrl.submit()" novalidate>
+<form name="signupForm" class="form-horizontal"
+      ng-submit="signupForm.$valid && signupCtrl.submit()" novalidate>
 
-    <div class="form-group">
-      <label for="name" class="col-xs-4 control-label">Nombre</label>
-      <div class="col-xs-8">
-        <input type="text" class="form-control" id="name"
-               placeholder="Ingresa tu nombre de usuario"
-               ng-model="signupCtrl.userForm.name" required />
-      </div>
+  <div class="form-group">
+    <label for="name" class="col-xs-4 control-label">Nombre</label>
+    <div class="col-xs-8">
+      <input type="text" class="form-control" id="name"
+             placeholder="Ingresa tu nombre de usuario"
+             ng-model="signupCtrl.userForm.name" required />
     </div>
+  </div>
 
-    <div class="form-group">
-      <label for="email" class="col-xs-4 control-label">Email</label>
-      <div class="col-xs-8">
-        <input type="email" class="form-control" id="email"
-               placeholder="Ingresa tu email"
-               ng-model="signupCtrl.userForm.email" required />
-      </div>
+  <div class="form-group">
+    <label for="email" class="col-xs-4 control-label">Email</label>
+    <div class="col-xs-8">
+      <input type="email" class="form-control" id="email"
+             placeholder="Ingresa tu email"
+             ng-model="signupCtrl.userForm.email" required />
     </div>
+  </div>
 
-    <div class="form-group">
-      <label for="password" class="col-xs-4 control-label">Contraseña</label>
-      <div class="col-xs-8">
-        <input type="password" class="form-control" id="password"
-               placeholder="Ingresa una contraseña para tu cuenta"
-               ng-model="signupCtrl.userForm.password" required />
-      </div>
+  <div class="form-group">
+    <label for="password" class="col-xs-4 control-label">Contraseña</label>
+    <div class="col-xs-8">
+      <input type="password" class="form-control" id="password"
+             placeholder="Ingresa una contraseña para tu cuenta"
+             ng-model="signupCtrl.userForm.password" required />
     </div>
+  </div>
 
-    <div class="form-group">
-      <label for="password-confirmation" class="col-xs-4 control-label">Confirma tu contraseña</label>
-      <div class="col-xs-8">
-        <input type="password" class="form-control" id="password-confirmation"
-               placeholder="Confirma tu contraseña"
-               ng-model="signupCtrl.userForm.password_confirmation" required />
-      </div>
+  <div class="form-group">
+    <label for="password-confirmation" class="col-xs-4 control-label">Confirma tu contraseña</label>
+    <div class="col-xs-8">
+      <input type="password" class="form-control" id="password-confirmation"
+             placeholder="Confirma tu contraseña"
+             ng-model="signupCtrl.userForm.password_confirmation" required />
     </div>
+  </div>
 
-    <div class="form-group right-align">
-      <button type="submit" class="btn btn-primary"
-              ng-disabled="!signupForm.$valid">
-              Sign up
-      </button>
-    </div>
-  </form>
-</div>
+  <div class="form-group right-align">
+    <button type="submit" class="btn btn-primary"
+            ng-disabled="!signupForm.$valid">
+            Sign up
+    </button>
+  </div>
+</form>

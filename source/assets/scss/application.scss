@@ -26,3 +26,12 @@ html, body {
   display: flex;
   justify-content: flex-end;
 }
+
+#logo {
+  margin-top: 75px;
+}
+
+.center-align-space-around {
+  display: flex;
+  justify-content: space-around;
+}

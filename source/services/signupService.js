@@ -10,6 +10,8 @@
     self.signup = function(userForm) {
       $sessionStorage.users.push(userForm);
       $sessionStorage.currentUser = userForm;
+      $('#signup-modal').modal('hide');
+      $window.location.href = '/#/home';
 
       /* $http.post('#', userForm)
            .success(function() {

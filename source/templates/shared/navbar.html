@@ -18,35 +18,56 @@
 
       <search-bar class="navbar-form navbar-left"></search-bar><!-- Falta agregar si hay usuario-->
 
-      <form name="loginForm" class="navbar-form navbar-right"
-            ng-submit="loginForm.$valid && navbarCtrl.login()"
-            ng-if="!appCtrl.loggedIn()"
-            novalidate>
-        <div class="form-group">
-          <input type="email" class="form-control" id="login-email" placeholder="e-mail"
-                 ng-model="navbarCtrl.session.email" required />
-        </div>
-        <div class="form-group">
-          <input type="password" class="form-control" placeholder="password"
-                 ng-model="navbarCtrl.session.password" required />
-        </div>
+      <div class="navbar-right">
+        <form name="loginForm" class="navbar-form"
+              ng-submit="loginForm.$valid && navbarCtrl.login()"
+              ng-if="!appCtrl.loggedIn()"
+              novalidate>
 
-        <button type="submit" class="btn btn-default"
-                ng-disabled="!loginForm.$valid">
-                Entrar
-        </button>
-      </form>
+          <div class="form-group">
+            <input type="email" class="form-control" id="login-email" placeholder="e-mail"
+                   ng-model="navbarCtrl.session.email" required />
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" placeholder="password"
+                   ng-model="navbarCtrl.session.password" required />
+          </div>
 
-      <div class="navbar-right" ng-if="appCtrl.loggedIn()">
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="/#/">{{appCtrl.currentUser().name}}</a></li>
-        </ul>
+          <button type="submit" class="btn btn-default"
+                  ng-disabled="!loginForm.$valid">
+                  Entrar
+          </button>
 
-        <form name="logoutForm" class="navbar-form navbar-right"
-              ng-submit="navbarCtrl.logout()">
-              <button type="submit" class="btn btn-default">Salir</button>
+          <button type="button" class="btn btn-default" data-toggle="modal" data-target="#signup-modal">
+            Sign up
+          </button>
         </form>
+
+        <div ng-if="appCtrl.loggedIn()">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/#/">{{appCtrl.currentUser().name}}</a></li>
+          </ul>
+
+          <form name="logoutForm" class="navbar-form navbar-right"
+                ng-submit="navbarCtrl.logout()">
+                <button type="submit" class="btn btn-default">Salir</button>
+          </form>
+        </div>
       </div>
     </div>
   </div>
 </nav>
+
+<div class="modal fade" id="signup-modal" tabindex="-1" role="dialog" aria-labelledby="signup" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Sign up</h4>
+      </div>
+      <div class="modal-body">
+        <user-signup></user-signup>
+      </div>
+    </div>
+  </div>
+</div>
