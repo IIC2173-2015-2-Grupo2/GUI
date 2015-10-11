@@ -20,6 +20,6 @@
   function newsDisplayController(newsDisplayService) {
     var vm = this;
     
-    vm.news = newsDisplayService.getNews();
+    vm.newsItems = newsDisplayService.getNews();
   };
 })();

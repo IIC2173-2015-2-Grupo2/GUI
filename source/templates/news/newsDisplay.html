@@ -1,23 +1,22 @@
 <div class="row">
-  <div class="col-sm-6 col-md-4"  ng-repeat="article in newsDisplayCtrl.news">
+  <div class="col-sm-6 col-md-4"  ng-repeat="newItem in newsDisplayCtrl.newsItems">
     <div class="article thumbnail">
-      <div class="date right-align">
-        {{ new Date(article.date) | date }}
-      </div>
-      <img ng-src={{article.image}} 
+      <img ng-src={{newItem.image}} 
           alt="...">
       <div class="caption">
         <div class="source">
-          ref. {{article.source}}
+          ref. {{newItem.source}}
         </div>
-        <h2>{{ article.title | limitTo:22:'...' }}{{ article.title.length > 22 ? '...' : '' }}</h2>
-        <p>{{ article.review }}</p>
+        <h2>{{ newItem.title | limitTo:22:'...' }}{{ newItem.title.length > 22 ? '...' : '' }}</h2>
+        <p>{{ newItem.url }}</p>
       </div>
+      <!--
       <div class="tags">
-        <span class="tag label label-info" ng-repeat="tag in article.tags">
+        <span class="tag label label-info" ng-repeat="tag in newItem.tags">
           {{ tag.name }}
         </span>
       </div>
+      -->
     </div>
   </div>
 </div>

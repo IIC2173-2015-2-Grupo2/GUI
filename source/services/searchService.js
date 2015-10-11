@@ -12,15 +12,17 @@
       alert('buscando: ' + search.content);
       $window.location.href = '/#/home';
 
-      /* $http.get('#', mv.search)
-           .success(function(data) {
-             alert("Success!");
-             $rootScope.news="noticias";
-             $window.location.href = '/#/home';
-           })
-           .error(function() {
-             alert('fail!');
-           });*/
+      // $http({
+      //   method: 'POST',
+      //   url: 'http://arqui8.ing.puc.cl/api/v1/private/news',
+      //   data: $.param(search),
+      //   headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+      // }).success(function(data, textStatus, xhr) {
+      //     console.log(data);
+      //     $window.location.href = '/#/home';
+      // }).error(function(data, textStatus, xhr) {
+      //     $window.location.href = '/#/';
+      // });
     };
   }
 })();
