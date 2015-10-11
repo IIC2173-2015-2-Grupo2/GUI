@@ -16,7 +16,10 @@
         <li class="active fredericka-font"><a href="/#/home">Newsify</a></li>
       </ul>
 
-      <search-bar class="navbar-form navbar-left"></search-bar><!-- Falta agregar si hay usuario-->
+      <div class="navbar-form navbar-left"
+           ng-if="appCtrl.loggedIn()">
+        <search-bar></search-bar>
+      </div>
 
       <div class="navbar-right">
         <form name="loginForm" class="navbar-form"
