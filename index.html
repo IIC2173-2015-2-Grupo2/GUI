@@ -9,13 +9,21 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Fredericka+the+Great' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="//bootswatch.com/united/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/public/assets/stylesheets/application.css">
   </head>
   <body>
-    <app-navbar></app-navbar>
+    <div id="wrapper">
+      <app-navbar></app-navbar>
 
-    <div ng-view class="container"></div>
+        <div ng-view id="content" class="container"></div>
 
+        <div id="footer" class="container navbar-default center-align-space-between">
+          <span>A</span>
+          <span>B</span>
+          <span><i class="fa fa-github">Diego</i></span>
+        </div>
+    </div>
 <!-- Principal -->
     <script type="text/javascript" src="source/app.js"></script>
     <script type="text/javascript" src="source/router.js"></script>
@@ -38,6 +46,5 @@
 <!-- External libraries -->
     <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
   </body>
 </html>
