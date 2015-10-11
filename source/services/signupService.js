@@ -16,7 +16,10 @@
           data: $.param(userForm),
           headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).success(function(data, textStatus, xhr) {
-            console.log(data);
+            console.log(data.token);
+            $('#signup-modal').modal('hide');
+            $sessionStorage.currentUser = { 'password' : userForm.password,
+                                            'token' : data.token };
             $window.location.href = '/#/home';
         }).error(function(data, textStatus, xhr) {
             $window.location.href = '/#/';
@@ -24,11 +27,6 @@
       } else {
         alert('fail');
       }
-
-      /* $sessionStorage.users.push(userForm);
-      $sessionStorage.currentUser = userForm;
-      $('#signup-modal').modal('hide');
-      $window.location.href = '/#/home'; */
     };
   }
 })();
