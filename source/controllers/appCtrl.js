@@ -4,9 +4,9 @@
   angular.module('app')
          .controller('appController', appController);
 
-  appController.$inject = ['sessionService','dataTestService'];
+  appController.$inject = ['sessionService'];
 
-  function appController(sessionService,dataTestService) {
+  function appController(sessionService) {
     var vm = this;
     vm.loggedIn = function() {
       return sessionService.loggedIn();

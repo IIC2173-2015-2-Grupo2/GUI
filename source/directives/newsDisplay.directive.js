@@ -19,7 +19,7 @@
 
   function newsDisplayController(newsDisplayService) {
     var vm = this;
-    //Aca se deben entregar las noticias
+    
     vm.news = newsDisplayService.getNews();
   };
 })();
