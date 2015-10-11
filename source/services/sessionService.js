@@ -7,35 +7,25 @@
   function sessionService($http, $window, $sessionStorage) {
     var self = this;
 
-    if ($sessionStorage.users === undefined) {
-      $sessionStorage.users = [];
-    }
-
     self.login = function(userForm) {
-      if ($sessionStorage.users !== undefined) {
-          $sessionStorage.users.forEach(function(user) {
-            if (user.email === userForm.email && user.password === userForm.password) {
-              $sessionStorage.currentUser = user;
-              $window.location.href = '/#/home';
-              return;
-            }
-          });
-        $window.location.href = '/#/';
-      } else {
-        $window.location.href = '/#/';
-      }
+      $http({
+        method: 'POST',
+        url: 'http://arqui8.ing.puc.cl/api/v1/auth/token',
+        data: $.param(userForm),
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+      }).success(function(data, textStatus, xhr) {
+          alert('login');
+          console.log(data);
+          $sessionStorage.currentUser = { 'username' : userForm.username,
+                                          'password' : userForm.password,
+                                          'token' : data.token };
+          $window.location.href = '/#/home';
+      }).error(function(data, textStatus, xhr) {
+          alert('fail');
+          $window.location.href = '/#/';
+      });
 
       userForm = {};
-
-      /*$ $http.post('#', userForm)
-           .success(function() {
-             alert('success!');
-             $window.location.href = '/#/home';
-           })
-           .error(function() {
-             alert('fail!');
-             $window.location.href = '/#/';
-           });*/
     };
 
     self.logout = function() {

@@ -22,6 +22,7 @@
     vm.session = {};
 
     vm.login = function() {
+      alert('login');
       sessionService.login(vm.session);
       vm.session = {};
     };
