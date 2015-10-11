@@ -8,20 +8,27 @@
     var self = this;
 
     self.signup = function(userForm) {
-      $sessionStorage.users.push(userForm);
+
+      if (userForm.password === userForm.passwordConfirmation) {
+        $http({
+          method: 'POST',
+          url: 'http://arqui8.ing.puc.cl/api/v1/auth/signup',
+          data: $.param(userForm),
+          headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).success(function(data, textStatus, xhr) {
+            console.log(data);
+            $window.location.href = '/#/home';
+        }).error(function(data, textStatus, xhr) {
+            $window.location.href = '/#/';
+          });
+      } else {
+        alert('fail');
+      }
+
+      /* $sessionStorage.users.push(userForm);
       $sessionStorage.currentUser = userForm;
       $('#signup-modal').modal('hide');
-      $window.location.href = '/#/home';
-
-      /* $http.post('#', userForm)
-           .success(function() {
-             alert('success!');
-             $window.location.href = '/#/home';
-           })
-           .error(function() {
-             alert('fail!');
-             $window.location.href = '/#/';
-           }); */
+      $window.location.href = '/#/home'; */
     };
   }
 })();
