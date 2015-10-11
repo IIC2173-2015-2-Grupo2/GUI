@@ -7,25 +7,23 @@
   function sessionService($http, $window, $sessionStorage) {
     var self = this;
 
+    // Returns a promise
     self.login = function(userForm) {
-      $http({
-        method: 'POST',
-        url: 'http://arqui8.ing.puc.cl/api/v1/auth/token',
-        data: $.param(userForm),
-        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-      }).success(function(data, textStatus, xhr) {
-          alert('login');
-          console.log(data);
-          $sessionStorage.currentUser = { 'username' : userForm.username,
-                                          'password' : userForm.password,
-                                          'token' : data.token };
-          $window.location.href = '/#/home';
-      }).error(function(data, textStatus, xhr) {
-          alert('fail');
-          $window.location.href = '/#/';
-      });
-
-      userForm = {};
+      return
+        $http({
+          method: 'POST',
+          url: 'http://arqui8.ing.puc.cl/api/v1/auth/token',
+          data: $.param(userForm),
+          headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).success(function(data, textStatus, xhr) {
+            $sessionStorage.currentUser = { 'username' : userForm.username,
+                                            'password' : userForm.password,
+                                            'token' : data.token };
+            $window.location.href = '/#/home';
+        }).error(function(data, textStatus, xhr) {
+            alert('fail');
+            $window.location.href = '/#/';
+        });
     };
 
     self.logout = function() {
