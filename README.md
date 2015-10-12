@@ -20,20 +20,13 @@ And install all of the dependencies via
 $ npm install
 ```
 
-In order to compile `scss` into `css`, and to start the *watch* tasks of gulp,
-just visit the application directory and run gulp:
-
-```sh
-$ gulp
-```
-
-Then, to start the Python Server, run `npm start` in the same directory:
+In order to compile `scss` into `css`, to start the *watch* tasks of gulp, and start the local server just visit the application directory and:
 
 ```sh
 $ npm start
 ```
 
-You should now be able to open your browser and visit `http://localhost:8000` to
+You should now be able to open your browser and visit `http://localhost:8080` to
 begin using the application.
 
 #### Notes:
