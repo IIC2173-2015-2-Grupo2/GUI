@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "description": "Worldwide news provider GUI",
   "scripts": {
-    "start": "python3 -m http.server",
-    "build": "gulp"
+    "start": "gulp",
+    "build": "gulp build"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
   "homepage": "https://github.com/IIC2173-2015-2-Grupo2/GUI#readme",
   "devDependencies": {
     "gulp": "^3.9.0",
+    "gulp-connect": "^2.2.0",
     "gulp-jshint": "^1.11.2",
     "gulp-sass": "^2.0.4",
     "gulp-util": "^3.0.6",
