@@ -3,8 +3,9 @@
   <div class="form-group">
     <div class="input-group">
       <div class="input-group-addon"><i class="fa fa-search"></i></div>
-      <input type="text" class="form-control" id="search" placeholder="Buscar noticias..."
-             ng-model="searchBarCtrl.search.content" required />
+      <tags-input ng-model="searchBarCtrl.tags">
+        <auto-complete source="searchBarCtrl.tagCollection"></auto-complete>
+      </tags-input>
     </div>
   </div>
 

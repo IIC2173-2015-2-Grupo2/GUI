@@ -15,6 +15,14 @@ html, body {
   .form-group {
     margin: 0 10px;
   }
+
+  .tags {
+    display: flex;
+
+    input {
+      min-width: 200px;
+    }
+  }
 }
 
 .tag {

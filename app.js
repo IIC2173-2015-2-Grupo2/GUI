@@ -1,5 +1,5 @@
 (function(){
-  angular.module('app', ['ngRoute', 'ngStorage', 'users','news']);
+  angular.module('app', ['ngRoute', 'ngStorage', 'users', 'news', 'ngTagsInput']);
   angular.module('users', ['ngStorage']);
   angular.module('news', ['ngStorage']);
 })();
@@ -128,11 +128,11 @@
 
   function searchBarController(searchService) {
     var vm = this;
-    vm.search = {};
+    vm.tagCollection = [{text: "nahi"}, {text:"steinsi"}, {text:"sali"}];
 
     vm.submit = function() {
-      searchService.browse(vm.search);
-      vm.search = {};
+      console.log(vm.tags);
+      searchService.browse(vm.tags);
     }
   };
 })();
