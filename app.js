@@ -21,6 +21,17 @@
       })
       .otherwise({redirectTo: '/' });
   }
+
+  angular.module('app').run(authentication);
+  
+  function authentication($rootScope,$location,$sessionStorage){
+    $rootScope.$on( "$routeChangeStart", function(event, next, current) {
+      if ($location.path() != "/" && $sessionStorage.currentUser == null ) {
+        $location.path( "/" );
+        alert('No has iniciado sesión');
+      }
+    });
+  }
 })();
 
 (function(){
@@ -128,10 +139,9 @@
 
   function searchBarController(searchService) {
     var vm = this;
-    vm.tagCollection = [{text: "nahi"}, {text:"steinsi"}, {text:"sali"}];
+    vm.tagCollection = [{text: "Nahi"}, {text:"Steinsi"}, {text:"Sali"}];
 
     vm.submit = function() {
-      console.log(vm.tags);
       searchService.browse(vm.tags);
     }
   };
