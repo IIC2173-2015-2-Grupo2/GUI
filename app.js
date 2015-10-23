@@ -1,5 +1,5 @@
 (function(){
-  angular.module('app', ['ngRoute', 'ngStorage', 'users','news']);
+  angular.module('app', ['ngRoute', 'ngStorage', 'users', 'news', 'ngTagsInput']);
   angular.module('users', ['ngStorage']);
   angular.module('news', ['ngStorage']);
 })();
@@ -14,12 +14,25 @@
         controllerAs: 'appCtrl',
         templateUrl: 'source/templates/welcome.html',
       })
-      .when('/home', {
+      .when('/news', {
         controller: 'appController',
         controllerAs: 'appCtrl',
-        templateUrl: 'source/templates/home.html',
+        templateUrl: 'source/templates/news/news.html',
       })
       .otherwise({redirectTo: '/' });
+  }
+
+  angular.module('app').run(authentication);
+
+  function authentication($rootScope, $location, $sessionStorage){
+    $rootScope.$on( "$routeChangeStart", function(event, next, current) {
+      if ($location.path() != '/' && $sessionStorage.currentUser == null ) {
+        $location.path( '/' );
+        swal({ title: "Debes iniciar sesión para realizar esto.",
+               type: "error",
+               timer: 3500});
+      }
+    });
   }
 })();
 
@@ -41,7 +54,7 @@
     vm.currentUser = function() {
       return sessionService.currentUser();
     };
-  };
+  }
 })();
 
 (function() {
@@ -59,7 +72,7 @@
     };
 
     return directive;
-  };
+  }
 
   navbarController.$inject = ['sessionService'];
 
@@ -75,7 +88,7 @@
     vm.logout = function() {
       sessionService.logout();
     };
-  };
+  }
 })();
 
 (function() {
@@ -100,11 +113,10 @@
   function newsDisplayController(newsDisplayService) {
     var vm = this;
     vm.newsItems = [];
-    newsDisplayService.getNews().then(function(data){
-      console.log(data.data.news);
+    newsDisplayService.getNews().then(function(data) {
       vm.newsItems = data.data.news;
     });
-  };
+  }
 })();
 
 (function() {
@@ -128,13 +140,12 @@
 
   function searchBarController(searchService) {
     var vm = this;
-    vm.search = {};
+    vm.tagCollection = [{text: "Nahi"}, {text:"Steinsi"}, {text:"Sali"}];
 
     vm.submit = function() {
-      searchService.browse(vm.search);
-      vm.search = {};
-    }
-  };
+      searchService.browse(vm.tags);
+    };
+  }
 })();
 
 (function() {
@@ -146,7 +157,7 @@
   function userSignup() {
     var directive = {
      restrict: 'E',
-     templateUrl: '/source/templates/userSignup.html',
+     templateUrl: '/source/templates/shared/userSignup.html',
      controller: signupController,
      controllerAs: 'signupCtrl'
     };
@@ -163,8 +174,8 @@
     vm.submit = function() {
       signupService.signup(vm.userForm);
       vm.userForm = {};
-    }
-  };
+    };
+  }
 })();
 
 (function() {
@@ -227,9 +238,8 @@
           $sessionStorage.currentUser = { 'username' : userForm.username,
                                           'password' : userForm.password,
                                           'token' : data.token };
-          $window.location.href = '/#/home';
+          $window.location.href = '/#/news';
       }).error(function(data, textStatus, xhr) {
-          alert('fail');
           $window.location.href = '/#/';
       });
     };
@@ -245,7 +255,7 @@
 
     self.currentUser = function() {
       return $sessionStorage.currentUser;
-    }
+    };
   }
 })();
 
@@ -259,7 +269,6 @@
     var self = this;
 
     self.signup = function(userForm) {
-
       if (userForm.password === userForm.passwordConfirmation) {
         $http({
           method: 'POST',
@@ -267,17 +276,18 @@
           data: $.param(userForm),
           headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).success(function(data, textStatus, xhr) {
-            // console.log(data.token);
             $('#signup-modal').modal('hide');
             $sessionStorage.currentUser = { 'username' : userForm.username,
                                             'password' : userForm.password,
                                             'token' : data.token };
-            $window.location.href = '/#/home';
+            $window.location.href = '/#/news';
         }).error(function(data, textStatus, xhr) {
             $window.location.href = '/#/';
         });
       } else {
-        alert('fail');
+        swal({ title: "La contraseña y su confirmación deben coincidir.",
+               type: "error",
+               timer: 3500});
       }
     };
   }

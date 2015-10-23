@@ -15,6 +15,14 @@ html, body {
   .form-group {
     margin: 0 10px;
   }
+
+  .tags {
+    display: flex;
+
+    input {
+      min-width: 200px;
+    }
+  }
 }
 
 .tag {
@@ -37,6 +45,12 @@ html, body {
 #logo {
   margin-top: 75px;
   font-size: 15em;
+}
+
+.center-align {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .center-align-space-between {

@@ -8,7 +8,6 @@
     var self = this;
 
     self.signup = function(userForm) {
-
       if (userForm.password === userForm.passwordConfirmation) {
         $http({
           method: 'POST',
@@ -16,17 +15,18 @@
           data: $.param(userForm),
           headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).success(function(data, textStatus, xhr) {
-            // console.log(data.token);
             $('#signup-modal').modal('hide');
             $sessionStorage.currentUser = { 'username' : userForm.username,
                                             'password' : userForm.password,
                                             'token' : data.token };
-            $window.location.href = '/#/home';
+            $window.location.href = '/#/news';
         }).error(function(data, textStatus, xhr) {
             $window.location.href = '/#/';
         });
       } else {
-        alert('fail');
+        swal({ title: "La contraseña y su confirmación deben coincidir.",
+               type: "error",
+               timer: 3500});
       }
     };
   }

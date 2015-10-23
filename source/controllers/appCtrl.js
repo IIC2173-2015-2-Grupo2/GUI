@@ -16,5 +16,5 @@
     vm.currentUser = function() {
       return sessionService.currentUser();
     };
-  };
+  }
 })();

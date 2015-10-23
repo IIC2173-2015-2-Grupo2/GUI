@@ -19,11 +19,10 @@
 
   function searchBarController(searchService) {
     var vm = this;
-    vm.search = {};
+    vm.tagCollection = [{text: "Nahi"}, {text:"Steinsi"}, {text:"Sali"}];
 
     vm.submit = function() {
-      searchService.browse(vm.search);
-      vm.search = {};
-    }
-  };
+      searchService.browse(vm.tags);
+    };
+  }
 })();

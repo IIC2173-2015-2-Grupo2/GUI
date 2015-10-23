@@ -1,4 +1,5 @@
 # Newsify GUI
+
 [![Build Status](https://travis-ci.org/IIC2173-2015-2-Grupo2/GUI.svg)](https://travis-ci.org/IIC2173-2015-2-Grupo2/GUI) [![Code Climate](https://codeclimate.com/github/IIC2173-2015-2-Grupo2/GUI/badges/gpa.svg)](https://codeclimate.com/github/IIC2173-2015-2-Grupo2/GUI)
 
 ### Framework: AngularJS ([Styleguide](https://github.com/johnpapa/angular-styleguide))
