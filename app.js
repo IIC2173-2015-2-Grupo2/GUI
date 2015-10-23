@@ -54,7 +54,7 @@
     vm.currentUser = function() {
       return sessionService.currentUser();
     };
-  };
+  }
 })();
 
 (function() {
@@ -72,7 +72,7 @@
     };
 
     return directive;
-  };
+  }
 
   navbarController.$inject = ['sessionService'];
 
@@ -88,7 +88,7 @@
     vm.logout = function() {
       sessionService.logout();
     };
-  };
+  }
 })();
 
 (function() {
@@ -113,11 +113,10 @@
   function newsDisplayController(newsDisplayService) {
     var vm = this;
     vm.newsItems = [];
-    newsDisplayService.getNews().then(function(data){
-      console.log(data.data.news);
+    newsDisplayService.getNews().then(function(data) {
       vm.newsItems = data.data.news;
     });
-  };
+  }
 })();
 
 (function() {
@@ -145,8 +144,8 @@
 
     vm.submit = function() {
       searchService.browse(vm.tags);
-    }
-  };
+    };
+  }
 })();
 
 (function() {
@@ -175,8 +174,8 @@
     vm.submit = function() {
       signupService.signup(vm.userForm);
       vm.userForm = {};
-    }
-  };
+    };
+  }
 })();
 
 (function() {
@@ -241,7 +240,6 @@
                                           'token' : data.token };
           $window.location.href = '/#/news';
       }).error(function(data, textStatus, xhr) {
-          alert('fail');
           $window.location.href = '/#/';
       });
     };
@@ -257,7 +255,7 @@
 
     self.currentUser = function() {
       return $sessionStorage.currentUser;
-    }
+    };
   }
 })();
 
@@ -287,7 +285,9 @@
             $window.location.href = '/#/';
         });
       } else {
-        alert('fail');
+        swal({ title: "La contraseña y su confirmación deben coincidir.",
+               type: "error",
+               timer: 3500});
       }
     };
   }

@@ -20,7 +20,6 @@
                                           'token' : data.token };
           $window.location.href = '/#/news';
       }).error(function(data, textStatus, xhr) {
-          alert('fail');
           $window.location.href = '/#/';
       });
     };
@@ -36,6 +35,6 @@
 
     self.currentUser = function() {
       return $sessionStorage.currentUser;
-    }
+    };
   }
 })();

@@ -24,6 +24,6 @@
     vm.submit = function() {
       signupService.signup(vm.userForm);
       vm.userForm = {};
-    }
-  };
+    };
+  }
 })();

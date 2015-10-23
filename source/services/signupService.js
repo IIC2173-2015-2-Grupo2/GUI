@@ -24,7 +24,9 @@
             $window.location.href = '/#/';
         });
       } else {
-        alert('fail');
+        swal({ title: "La contraseña y su confirmación deben coincidir.",
+               type: "error",
+               timer: 3500});
       }
     };
   }
