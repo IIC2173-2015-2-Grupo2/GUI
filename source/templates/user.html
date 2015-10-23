@@ -1,0 +1,29 @@
+<h1>{{userCtrl.username}}</h1>
+</br>
+<h3>Tags de Interés:</h3>
+<div class = "user-tags col-xs-5">
+  <div class="col-sm-6 col-md-4" ng-class="userCtrl.userTags" ng-repeat="userTag in userCtrl.userTags" >
+    <span class="label label-primary">{{userTag.text}}</span>
+  </div>
+</div>
+</br>
+</br>
+<h3>Elegir Tags de Preferencia:</h3>
+
+<div class = "user-tag-input col-xs-5">
+  <form name="tagsForm" role="search"
+        ng-submit="userCtrl.submit()" novalidate>
+    <div class="form-group ">
+      <div class="input-group">
+        <div class="input-group-addon"><i class="fa fa-search"></i></div>
+        <tags-input ng-model="userCtrl.tags" max-tags={{userCtrl.maxTags}} placeholder="Add a tag (max. 3)">
+          <auto-complete source="userCtrl.tagCollection"></auto-complete>
+        </tags-input>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-default">
+            Buscar
+    </button>
+  </form>
+</div>

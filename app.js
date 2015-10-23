@@ -19,6 +19,11 @@
         controllerAs: 'appCtrl',
         templateUrl: 'source/templates/home.html',
       })
+      .when('/user',{
+        controller: 'userController',
+        controllerAs: 'userCtrl',
+        templateUrl: 'source/templates/user.html',
+      })
       .otherwise({redirectTo: '/' });
   }
 
@@ -52,6 +57,28 @@
     vm.currentUser = function() {
       return sessionService.currentUser();
     };
+  };
+})();
+
+(function(){
+  'use strict';
+
+  angular.module('app')
+         .controller('userController', userController);
+
+  function userController($sessionStorage) {
+    var vm = this;
+    vm.username = $sessionStorage.currentUser.username;
+    vm.tagCollection = [{text: "Deportes"}, {text:"Musica"}, {text:"Salud"},{text:"Internacional"}];
+    //TODO incorporar nueva forma de límitar inputs
+    vm.maxTags = 3;
+    vm.userTags = $sessionStorage.currentUser.tags;
+    vm.submit = function(){
+      $sessionStorage.currentUser.tags = vm.tags;
+      vm.userTags = $sessionStorage.currentUser.tags;
+      vm.tags = [];
+    };
+
   };
 })();
 
