@@ -16,6 +16,5 @@
       vm.userTags = $sessionStorage.currentUser.tags;
       vm.tags = [];
     };
-
-  };
+  }
 })();
