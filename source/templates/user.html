@@ -1,17 +1,15 @@
 <h1>{{userCtrl.username}}</h1>
-</br>
 <h3>Tags de Interés:</h3>
-<div class = "user-tags col-xs-5">
+<div class = "user-tags col-xs-12 col-md-6">
   <div class="col-sm-6 col-md-4" ng-class="userCtrl.userTags" ng-repeat="userTag in userCtrl.userTags" >
     <span class="label label-primary">{{userTag.text}}</span>
   </div>
 </div>
-</br>
-</br>
-<h3>Elegir Tags de Preferencia:</h3>
 
-<div class = "user-tag-input col-xs-5">
-  <form name="tagsForm" role="search"
+<h3>Elegir tags de preferencia:</h3>
+
+<div class = "user-tag-input col-xs-12 col-md-6">
+  <form name="tagsForm" role="search" class="form-inline"
         ng-submit="userCtrl.submit()" novalidate>
     <div class="form-group ">
       <div class="input-group">
