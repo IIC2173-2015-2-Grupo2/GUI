@@ -30,6 +30,16 @@ $ npm start
 You should now be able to open your browser and visit `http://localhost:8080` to
 begin using the application.
 
+#### Docker
+
+```sh
+# Build
+$ docker build --no-cache --rm --tag=newsify-gui .
+
+# Run
+$ docker run --publish 3000:3000 --rm --name=newsify-gui newsify-gui
+```
+
 #### Notes:
 
 * Since this application uses CDN for some of its scripts and stylesheets
