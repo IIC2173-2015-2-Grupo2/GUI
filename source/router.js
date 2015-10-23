@@ -8,10 +8,10 @@
         controllerAs: 'appCtrl',
         templateUrl: 'source/templates/welcome.html',
       })
-      .when('/home', {
+      .when('/news', {
         controller: 'appController',
         controllerAs: 'appCtrl',
-        templateUrl: 'source/templates/home.html',
+        templateUrl: 'source/templates/news/news.html',
       })
       .otherwise({redirectTo: '/' });
   }

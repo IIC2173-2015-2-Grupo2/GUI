@@ -47,6 +47,12 @@ html, body {
   font-size: 15em;
 }
 
+.center-align {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .center-align-space-between {
   display: flex;
   justify-content: space-between;
