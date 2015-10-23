@@ -7,7 +7,7 @@
   function appNavbar() {
     var directive = {
       restrict: 'E',
-      templateUrl: 'source/templates/shared/navbar.html',
+      templateUrl: 'templates/shared/navbar.html',
       controller: navbarController,
       controllerAs: 'navbarCtrl'
     };
