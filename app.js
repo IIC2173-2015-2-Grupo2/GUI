@@ -128,10 +128,9 @@
 
   function searchBarController(searchService) {
     var vm = this;
-    vm.tagCollection = [{text: "nahi"}, {text:"steinsi"}, {text:"sali"}];
+    vm.tagCollection = [{text: "Nahi"}, {text:"Steinsi"}, {text:"Sali"}];
 
     vm.submit = function() {
-      console.log(vm.tags);
       searchService.browse(vm.tags);
     }
   };
