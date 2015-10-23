@@ -15,7 +15,7 @@
       <div class="center-align-space-between">
         <ul class="nav navbar-nav">
           <li class="active fredericka-font">
-            <a href="/#/home"><i class="fa fa-newspaper-o"></i> Newsify</a>
+            <a href="/#/"><i class="fa fa-newspaper-o"></i> Newsify</a>
           </li>
         </ul>
 
@@ -51,14 +51,20 @@
               <i class="fa fa-sign-in"></i> Entrar
             </button>
 
-            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#signup-modal">
+            <button type="button" class="btn btn-default" data-toggle="modal"
+                    data-target="#signup-modal">
               Sign up
             </button>
           </form>
 
           <div ng-if="appCtrl.loggedIn()">
             <ul class="nav navbar-nav">
-              <li class="active">
+              <li>
+                <a href="/#/news">
+                  Noticias
+                </a>
+              </li>
+              <li>
                 <a href="/#/user">
                   <i class="fa fa-user"></i> {{appCtrl.currentUser().username}}
                 </a>

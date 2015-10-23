@@ -13,7 +13,7 @@
     };
 
     return directive;
-  };
+  }
 
   navbarController.$inject = ['sessionService'];
 
@@ -29,5 +29,5 @@
     vm.logout = function() {
       sessionService.logout();
     };
-  };
+  }
 })();

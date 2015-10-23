@@ -7,7 +7,7 @@
   function userSignup() {
     var directive = {
      restrict: 'E',
-     templateUrl: '/source/templates/userSignup.html',
+     templateUrl: '/source/templates/shared/userSignup.html',
      controller: signupController,
      controllerAs: 'signupCtrl'
     };
@@ -24,6 +24,6 @@
     vm.submit = function() {
       signupService.signup(vm.userForm);
       vm.userForm = {};
-    }
-  };
+    };
+  }
 })();

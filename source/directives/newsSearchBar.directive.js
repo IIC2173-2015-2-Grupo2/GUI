@@ -23,6 +23,6 @@
 
     vm.submit = function() {
       searchService.browse(vm.tags);
-    }
-  };
+    };
+  }
 })();

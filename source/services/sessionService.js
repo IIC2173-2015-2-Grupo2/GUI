@@ -18,9 +18,8 @@
           $sessionStorage.currentUser = { 'username' : userForm.username,
                                           'password' : userForm.password,
                                           'token' : data.token };
-          $window.location.href = '/#/home';
+          $window.location.href = '/#/news';
       }).error(function(data, textStatus, xhr) {
-          alert('fail');
           $window.location.href = '/#/';
       });
     };
@@ -36,6 +35,6 @@
 
     self.currentUser = function() {
       return $sessionStorage.currentUser;
-    }
+    };
   }
 })();
