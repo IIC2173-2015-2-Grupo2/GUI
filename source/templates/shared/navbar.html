@@ -58,7 +58,12 @@
 
           <div ng-if="appCtrl.loggedIn()">
             <ul class="nav navbar-nav">
-              <li class="active">
+              <li>
+                <a href="/#/news">
+                  Noticias
+                </a>
+              </li>
+              <li>
                 <a href="/#/">
                   <i class="fa fa-user"></i> {{appCtrl.currentUser().username}}
                 </a>
