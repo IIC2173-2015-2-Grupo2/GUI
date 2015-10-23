@@ -10,10 +10,14 @@ gulp.task('default', ['build', 'connect', 'watch']);
 // build task, it must group all related tasks
 gulp.task('build', ['concat', 'build-css', 'jshint']);
 
-gulp.task('concat', function () {
+gulp.task('concat', ['move-templates'], function () {
   gulp.src(['source/**/modules.js', 'source/**/*.js'])
     .pipe(concat('app.js'))
-    .pipe(gulp.dest('.'));
+    .pipe(gulp.dest('public'));
+});
+
+gulp.task('move-templates', function() {
+  gulp.src(['source/templates/**/*']).pipe(gulp.dest('public/templates'));
 });
 
 gulp.task('build-css', function() {
@@ -24,7 +28,7 @@ gulp.task('build-css', function() {
 
 // configure the jshint task
 gulp.task('jshint', function() {
-  return gulp.src('source/assets/javascript/**/*.js')
+  return gulp.src('source/**/*.js')
     .pipe(jshint())
     .pipe(jshint.reporter('jshint-stylish'));
 });
@@ -38,7 +42,7 @@ gulp.task('connect', function() {
 });
 
 gulp.task('html', function () {
-  gulp.src('./index.html')
+  gulp.src('public/index.html')
       .pipe(connect.reload());
 });
 

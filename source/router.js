@@ -6,17 +6,17 @@
       .when('/', {
         controller: 'appController',
         controllerAs: 'appCtrl',
-        templateUrl: 'source/templates/welcome.html',
+        templateUrl: 'templates/welcome.html',
       })
       .when('/news', {
         controller: 'appController',
         controllerAs: 'appCtrl',
-        templateUrl: 'source/templates/news/news.html',
+        templateUrl: 'templates/news/news.html',
       })
       .when('/user',{
         controller: 'userController',
         controllerAs: 'userCtrl',
-        templateUrl: 'source/templates/user.html',
+        templateUrl: 'templates/user.html',
       })
       .otherwise({redirectTo: '/' });
   }
