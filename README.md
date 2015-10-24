@@ -8,8 +8,7 @@
 
 Make sure you have NodeJS 4.x.x and npm 3.3.4 installed.
 
-Then, check if you have gulp installed. If you do not have it, run the following
-command:
+Then, check if you have gulp installed. If you do not have it, run the following command:
 
 ```sh
 $ npm install --global gulp
@@ -27,8 +26,7 @@ In order to compile `scss` into `css`, to start the *watch* tasks of gulp, and s
 $ npm start
 ```
 
-You should now be able to open your browser and visit `http://localhost:8080` to
-begin using the application.
+You should now be able to open your browser and visit `http://localhost:8080` to begin using the application.
 
 #### Docker
 
@@ -42,6 +40,4 @@ $ docker run --publish 3000:3000 --rm --name=newsify-gui newsify-gui
 
 #### Notes:
 
-* Since this application uses CDN for some of its scripts and stylesheets
-  (particularly AngularJS and Bootstrap), you must run the development
-  environment while connected to the internet.
+* Since this application uses CDN for some of its scripts and stylesheets (particularly AngularJS and Bootstrap), you must run the development environment while connected to the internet.
