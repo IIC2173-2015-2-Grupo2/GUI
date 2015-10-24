@@ -48,7 +48,7 @@ gulp.task('html', function () {
 
 // configure which files to watch and what tasks to use on file changes
 gulp.task('watch', function() {
-  gulp.watch('./**/*.html', ['html']);
+  gulp.watch('./**/*.html', ['html', 'move-templates']);
   gulp.watch('source/**/*.js', ['concat', 'jshint']);
   gulp.watch('source/assets/scss/**/*.scss', ['build-css']);
 });

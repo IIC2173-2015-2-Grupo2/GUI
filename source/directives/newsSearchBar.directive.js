@@ -19,7 +19,12 @@
 
   function searchBarController(searchService) {
     var vm = this;
-    vm.tagCollection = [{text: "Nahi"}, {text:"Steinsi"}, {text:"Sali"}];
+    vm.tagCollection = [];
+
+    searchService.getTags().then(function(data) {
+      console.log(data);
+      vm.tagCollection = data.data.tags;
+    });
 
     vm.submit = function() {
       searchService.browseByTag(vm.tags);
