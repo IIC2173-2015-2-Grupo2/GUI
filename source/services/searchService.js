@@ -4,8 +4,12 @@
   angular.module('news')
          .service('searchService', searchService);
 
-  function searchService($http, $window, $sessionStorage) {
+  function searchService($http, $window, $sessionStorage, $localStorage) {
     var self = this;
+
+    self.getCurrentNews = function() {
+      return $localStorage.currentNews;
+    };
 
     self.getTags = function() {
       return $http({
@@ -14,6 +18,8 @@
         headers: {
           'Authorization': 'Bearer ' + $sessionStorage.currentUser.token
         }
+      }).success(function(data) {
+        $localStorage.tags = data.tags;
       });
     };
 
@@ -24,6 +30,8 @@
         headers: {
           'Authorization': 'Bearer ' + $sessionStorage.currentUser.token
         }
+      }).success(function(data) {
+        $localStorage.currentNews = data.news;
       });
     };
 
@@ -41,6 +49,9 @@
         headers: {
           'Authorization': 'Bearer ' + $sessionStorage.currentUser.token
         }
+      }).success(function(data) {
+        $localStorage.currentNews = data.news;
+        $window.location.href = '/#/news';
       });
     };
   }
