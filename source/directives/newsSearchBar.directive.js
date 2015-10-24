@@ -22,7 +22,7 @@
     vm.tagCollection = [{text: "Nahi"}, {text:"Steinsi"}, {text:"Sali"}];
 
     vm.submit = function() {
-      searchService.browse(vm.tags);
+      searchService.browseByTag(vm.tags);
     };
   }
 })();
