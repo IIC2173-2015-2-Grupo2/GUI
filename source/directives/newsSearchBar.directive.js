@@ -7,7 +7,7 @@
   function searchBar() {
     var directive = {
       restrict: 'E',
-      templateUrl: '/source/templates/news/searchBar.html',
+      templateUrl: '/templates/news/searchBar.html',
       controller: searchBarController,
       controllerAs: 'searchBarCtrl'
     };

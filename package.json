@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "description": "Worldwide news provider GUI",
   "scripts": {
-    "start": "gulp",
-    "build": "gulp build"
+    "start": "node index.js",
+    "build": "gulp build",
+    "dev": "gulp"
   },
   "repository": {
     "type": "git",
@@ -29,5 +30,8 @@
     "gulp-util": "^3.0.6",
     "jshint-stylish": "^2.0.1",
     "ngstorage": "^0.3.9"
+  },
+  "dependencies": {
+    "express": "^4.13.3"
   }
 }

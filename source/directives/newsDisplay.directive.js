@@ -7,7 +7,7 @@
   function newsDisplay() {
     var directive = {
       restrict: 'E',
-      templateUrl: '/source/templates/news/newsDisplay.html',
+      templateUrl: '/templates/news/newsDisplay.html',
       controller: newsDisplayController,
       controllerAs: 'newsDisplayCtrl'
     };
@@ -15,12 +15,12 @@
     return directive;
   }
 
-  newsDisplayController.$inject = ['newsDisplayService'];
+  newsDisplayController.$inject = ['searchService'];
 
-  function newsDisplayController(newsDisplayService) {
+  function newsDisplayController(searchService) {
     var vm = this;
     vm.newsItems = [];
-    newsDisplayService.getNews().then(function(data) {
+    searchService.getNews().then(function(data) {
       vm.newsItems = data.data.news;
     });
   }
