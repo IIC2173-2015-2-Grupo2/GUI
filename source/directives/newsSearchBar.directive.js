@@ -17,12 +17,12 @@
 
   searchBarController.$inject = ['searchService'];
 
-  function searchBarController(searchService) {
+  function searchBarController(searchService, $localStorage) {
     var vm = this;
-    vm.tagCollection = [{text: "Nahi"}, {text:"Steinsi"}, {text:"Sali"}];
+    vm.tagCollection = searchService.getCurrentTags() || searchService.getTags().then(function() { vm.tagCollection = searchService.getCurrentTags(); });
 
     vm.submit = function() {
-      searchService.browse(vm.tags);
+      searchService.getNewsByTag(vm.tags);
     };
   }
 })();

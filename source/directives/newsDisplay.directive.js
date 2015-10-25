@@ -17,11 +17,8 @@
 
   newsDisplayController.$inject = ['searchService'];
 
-  function newsDisplayController(searchService) {
+  function newsDisplayController(searchService, $localStorage) {
     var vm = this;
-    vm.newsItems = [];
-    searchService.getNews().then(function(data) {
-      vm.newsItems = data.data.news;
-    });
+    vm.newsItems = searchService.getCurrentNews() || searchService.getNews().then(function() { vm.newsItems = searchService.getCurrentNews(); });
   }
 })();
