@@ -11,6 +11,10 @@
       return $localStorage.currentNews;
     };
 
+    self.getCurrentTags = function() {
+      return JSON.stringify($localStorage.currentTags);
+    }
+
     self.getTags = function() {
       return $http({
         method: 'get',
@@ -19,7 +23,8 @@
           'Authorization': 'Bearer ' + $sessionStorage.currentUser.token
         }
       }).success(function(data) {
-        $localStorage.tags = data.tags;
+        console.log(JSON.stringify(data.tags));
+        $localStorage.currentTags = data.tags;
       });
     };
 
@@ -35,7 +40,7 @@
       });
     };
 
-    self.browseByTag = function(search) {
+    self.getNewsByTag = function(search) {
       var query = search.map(function(s) {
         return s.text;
       });
