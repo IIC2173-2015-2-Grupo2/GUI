@@ -2,7 +2,7 @@
      ng-controller="appController as appCtrl">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -11,7 +11,7 @@
       <a class="navbar-brand" href="/#/"></a>
     </div>
 
-    <div class="collapse navbar-collapse" id="navbar">
+    <div class="collapse navbar-collapse" id="main-navbar">
       <div class="center-align-space-between">
         <ul class="nav navbar-nav">
           <li class="active fredericka-font">
@@ -78,6 +78,27 @@
               </button>
             </form>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="navbar-inverse" ng-if="appCtrl.loggedIn()">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#sub-navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+
+      <div class="collapse navbar-collapse" id="sub-navbar">
+        <div class="center-align-space-between">
+          <span ng-repeat="provider in navbarCtrl.providers">
+            <a class="btn btn-link">{{provider.name}}</a>
+          </span>
         </div>
       </div>
     </div>

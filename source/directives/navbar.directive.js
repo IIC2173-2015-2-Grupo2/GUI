@@ -15,11 +15,12 @@
     return directive;
   }
 
-  navbarController.$inject = ['sessionService'];
+  navbarController.$inject = ['sessionService', 'searchService'];
 
-  function navbarController(sessionService) {
+  function navbarController(sessionService, searchService) {
     var vm = this;
     vm.session = {};
+    vm.providers = searchService.getCurrentNewsProviders() || searchService.getNewsProviders().then(function() { vm.providers = searchService.getCurrentNewsProviders(); });
 
     vm.login = function() {
       sessionService.login(vm.session)

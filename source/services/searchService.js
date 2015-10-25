@@ -12,7 +12,11 @@
     };
 
     self.getCurrentTags = function() {
-      return JSON.stringify($localStorage.currentTags);
+      return $localStorage.currentTags;
+    }
+
+    self.getCurrentNewsProviders = function() {
+      return $localStorage.currentNewsProviders;
     }
 
     self.getTags = function() {
@@ -23,8 +27,20 @@
           'Authorization': 'Bearer ' + $sessionStorage.currentUser.token
         }
       }).success(function(data) {
-        console.log(JSON.stringify(data.tags));
-        $localStorage.currentTags = data.tags;
+        var tags = data.tags.map(function(dataTag) { return {text: dataTag.name}; })
+        $localStorage.currentTags = tags;
+      });
+    };
+
+    self.getNewsProviders = function() {
+      return $http({
+        method: 'get',
+        url: 'http://arqui8.ing.puc.cl/api/v1/private/news_providers',
+        headers: {
+          'Authorization': 'Bearer ' + $sessionStorage.currentUser.token
+        }
+      }).success(function(data) {
+        $localStorage.currentNewsProviders = data.news_providers;
       });
     };
 
