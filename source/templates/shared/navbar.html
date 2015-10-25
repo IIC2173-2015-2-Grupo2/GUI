@@ -12,92 +12,91 @@
     </div>
 
     <div class="collapse navbar-collapse" id="main-navbar">
-      <div class="center-align-space-between">
-        <ul class="nav navbar-nav">
-          <li class="active fredericka-font">
-            <a href="/#/"><i class="fa fa-newspaper-o"></i> Newsify</a>
-          </li>
-        </ul>
+      <ul class="nav navbar-nav">
+        <li class="active fredericka-font">
+          <a href="/#/"><i class="fa fa-newspaper-o"></i> Newsify</a>
+        </li>
+      </ul>
 
-        <div class="navbar-form"
-             ng-if="appCtrl.loggedIn()">
-          <form name="searchForm" role="search"
-               ng-submit="searchForm.$valid && navbarCtrl.searchByTags()" novalidate>
-           <div class="form-group">
-             <div class="input-group">
-               <div class="input-group-addon"><i class="fa fa-search"></i></div>
-               <tags-input ng-model="navbarCtrl.tags">
-                 <auto-complete source="navbarCtrl.tagCollection"></auto-complete>
-               </tags-input>
-             </div>
+      <div class="navbar-left">
+        <form name="searchForm" role="search" class="navbar-form"
+              ng-if="appCtrl.loggedIn()"
+              ng-submit="searchForm.$valid && navbarCtrl.searchByTags()" novalidate>
+         <div class="form-group">
+           <div class="input-group">
+             <div class="input-group-addon"><i class="fa fa-search"></i></div>
+             <tags-input ng-model="navbarCtrl.tags">
+               <auto-complete source="navbarCtrl.tagCollection"></auto-complete>
+             </tags-input>
            </div>
+         </div>
 
-           <button type="submit" class="btn btn-default"
-                   ng-disabled="!searchForm.$valid">
-                   Buscar
-           </button>
+         <button type="submit" class="btn btn-default"
+                 ng-disabled="!searchForm.$valid">
+                 Buscar
+         </button>
 
-           <button type="button" class="btn btn-default"
-                   ng-click="navbarCtrl.clearSearch()">
-                   Quitar Filtro
-           </button>
-          </form>
-        </div>
+         <button type="button" class="btn btn-default"
+                 ng-click="navbarCtrl.clearSearch()">
+                 Quitar Filtro
+         </button>
+        </form>
+      </div>
 
-        <div>
-          <form name="loginForm" class="navbar-form"
-                ng-submit="loginForm.$valid && navbarCtrl.login()"
-                ng-if="!appCtrl.loggedIn()"
-                novalidate>
+      <div class="navbar-right">
+        <form name="loginForm" class="navbar-form"
+              ng-submit="loginForm.$valid && navbarCtrl.login()"
+              ng-if="!appCtrl.loggedIn()"
+              novalidate>
 
-            <div class="form-group">
-              <div class="input-group">
-                <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                <input type="text" class="form-control" placeholder="username"
-                       ng-model="navbarCtrl.session.username" required />
-              </div>
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-addon"><i class="fa fa-user"></i></div>
+              <input type="text" class="form-control" placeholder="username"
+                     ng-model="navbarCtrl.session.username" required />
             </div>
-
-            <div class="form-group">
-              <div class="input-group">
-                <div class="input-group-addon"><i class="fa fa-key"></i></div>
-                <input type="password" class="form-control" placeholder="password"
-                       ng-model="navbarCtrl.session.password" required />
-              </div>
-            </div>
-
-            <button type="submit" class="btn btn-default"
-                    ng-disabled="!loginForm.$valid">
-              <i class="fa fa-sign-in"></i> Entrar
-            </button>
-
-            <button type="button" class="btn btn-default" data-toggle="modal"
-                    data-target="#signup-modal">
-              Sign up
-            </button>
-          </form>
-
-          <div ng-if="appCtrl.loggedIn()">
-            <ul class="nav navbar-nav">
-              <li>
-                <a href="/#/news">
-                  Noticias
-                </a>
-              </li>
-              <li>
-                <a href="/#/user">
-                  <i class="fa fa-user"></i> {{appCtrl.currentUser().username}}
-                </a>
-              </li>
-            </ul>
-
-            <form name="logoutForm" class="navbar-form navbar-right"
-                  ng-submit="navbarCtrl.logout()">
-              <button type="submit" class="btn btn-default">
-                <i class="fa fa-sign-out"></i> Salir
-              </button>
-            </form>
           </div>
+
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-addon"><i class="fa fa-key"></i></div>
+              <input type="password" class="form-control" placeholder="password"
+                     ng-model="navbarCtrl.session.password" required />
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-default"
+                  ng-disabled="!loginForm.$valid">
+            <i class="fa fa-sign-in"></i> Entrar
+          </button>
+
+          <button type="button" class="btn btn-default" data-toggle="modal"
+                  data-target="#signup-modal">
+            Sign up
+          </button>
+        </form>
+
+        <div ng-if="appCtrl.loggedIn()">
+          <ul class="nav navbar-nav">
+            <li>
+              <a href="/#/news">
+                Noticias
+              </a>
+            </li>
+            <li>
+              <a href="/#/user">
+                <i class="fa fa-user"></i> {{appCtrl.currentUser().username}}
+              </a>
+            </li>
+            <li>
+              <form name="logoutForm" class="navbar-form"
+                    ng-submit="navbarCtrl.logout()">
+                <button type="submit" class="btn btn-default">
+                  <i class="fa fa-sign-out"></i> Salir
+                </button>
+              </form>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
@@ -114,11 +113,13 @@
         </button>
       </div>
 
-      <div class="collapse navbar-collapse" id="sub-navbar">
-        <div class="center-align-space-between">
-          <span ng-repeat="provider in navbarCtrl.providers">
-            <a class="btn btn-link">{{provider.name}}</a>
-          </span>
+      <div class="collapse navbar-collapse center-align" id="sub-navbar">
+        <div class="">
+          <ul class="nav navbar-nav">
+            <li ng-repeat="provider in navbarCtrl.providers">
+              <a class="btn btn-link">{{provider.name}}</a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
