@@ -15,10 +15,21 @@
     return directive;
   }
 
-  newsDisplayController.$inject = ['searchService'];
+  newsDisplayController.$inject = ['searchService', '$rootScope'];
 
-  function newsDisplayController(searchService, $localStorage) {
+  function newsDisplayController(searchService, $rootScope) {
     var vm = this;
-    vm.newsItems = searchService.getCurrentNews() || searchService.getNews().then(function() { vm.newsItems = searchService.getCurrentNews(); });
+    updateNews();
+
+    $rootScope.$on('newsChanged', function() {
+      updateNews();
+    });
+
+    function updateNews() {
+      vm.newsItems = searchService.getCurrentNews() ||
+                     searchService.getNews().then(function() {
+                       vm.newsItems = searchService.getCurrentNews();
+                     });
+    }
   }
 })();

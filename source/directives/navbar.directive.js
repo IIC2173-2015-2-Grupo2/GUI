@@ -15,12 +15,17 @@
     return directive;
   }
 
-  navbarController.$inject = ['sessionService', 'searchService'];
+  navbarController.$inject = ['sessionService', 'searchService', '$rootScope'];
 
-  function navbarController(sessionService, searchService) {
+  function navbarController(sessionService, searchService, $rootScope) {
     var vm = this;
     vm.session = {};
-    vm.providers = searchService.getCurrentNewsProviders() || searchService.getNewsProviders().then(function() { vm.providers = searchService.getCurrentNewsProviders(); });
+
+    vm.tagCollection = searchService.getCurrentTags() ||
+                       searchService.getTags().then(function() { vm.tagCollection = searchService.getCurrentTags(); });
+
+    vm.providers = searchService.getCurrentNewsProviders() ||
+                   searchService.getNewsProviders().then(function() { vm.providers = searchService.getCurrentNewsProviders(); });
 
     vm.login = function() {
       sessionService.login(vm.session)
@@ -29,6 +34,17 @@
 
     vm.logout = function() {
       sessionService.logout();
+    };
+
+    vm.clearSearch = function() {
+      searchService.clearCurrentNews();
+      $rootScope.$emit('newsChanged');
+    };
+
+    vm.searchByTags = function() {
+      searchService.getNewsByTag(vm.tags).then(function(data) {
+        $rootScope.$emit('newsChanged');
+      });
     };
   }
 })();

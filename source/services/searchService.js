@@ -5,21 +5,25 @@
          .service('searchService', searchService);
 
   function searchService($http, $window, $sessionStorage, $localStorage) {
-    var self = this;
+    var vm = this;
 
-    self.getCurrentNews = function() {
+    vm.getCurrentNews = function() {
       return $localStorage.currentNews;
     };
 
-    self.getCurrentTags = function() {
+    vm.getCurrentTags = function() {
       return $localStorage.currentTags;
     }
 
-    self.getCurrentNewsProviders = function() {
+    vm.getCurrentNewsProviders = function() {
       return $localStorage.currentNewsProviders;
     }
 
-    self.getTags = function() {
+    vm.clearCurrentNews = function() {
+      delete $localStorage.currentNews;
+    }
+
+    vm.getTags = function() {
       return $http({
         method: 'get',
         url: 'http://arqui8.ing.puc.cl/api/v1/private/tags',
@@ -32,7 +36,7 @@
       });
     };
 
-    self.getNewsProviders = function() {
+    vm.getNewsProviders = function() {
       return $http({
         method: 'get',
         url: 'http://arqui8.ing.puc.cl/api/v1/private/news_providers',
@@ -44,7 +48,7 @@
       });
     };
 
-    self.getNews = function() {
+    vm.getNews = function() {
       return $http({
         method: 'get',
         url: 'http://arqui8.ing.puc.cl/api/v1/private/news',
@@ -56,7 +60,7 @@
       });
     };
 
-    self.getNewsByTag = function(search) {
+    vm.getNewsByTag = function(search) {
       var query = search.map(function(s) {
         return s.text;
       });
