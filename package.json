@@ -27,11 +27,12 @@
     "gulp-connect": "^2.2.0",
     "gulp-jshint": "^1.11.2",
     "gulp-sass": "^2.0.4",
-    "gulp-util": "^3.0.6",
+    "gulp-util": "^3.0.7",
     "jshint-stylish": "^2.0.1",
     "ngstorage": "^0.3.9"
   },
   "dependencies": {
-    "express": "^4.13.3"
+    "express": "^4.13.3",
+    "morgan": "^1.6.1"
   }
 }
