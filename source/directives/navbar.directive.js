@@ -46,5 +46,11 @@
         $rootScope.$emit('newsChanged');
       });
     };
+
+    vm.searchByProvider = function(provider) {
+      searchService.getNewsByProvider(provider).then(function(data) {
+        $rootScope.$emit('newsChanged');
+      });
+    };
   }
 })();
