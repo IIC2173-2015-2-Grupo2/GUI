@@ -25,7 +25,8 @@
 
   function authentication($rootScope, $location, $sessionStorage) {
     $rootScope.$on( "$routeChangeStart", function(event, next, current) {
-      if (($location.path() != '/' && $location.path() != '') && $sessionStorage.currentUser === undefined ) {
+      if (($location.path() !== '/' && $location.path() !== '') &&
+           $sessionStorage.currentUser === undefined ) {
         $location.path( '/' );
         swal({ title: "Debes iniciar sesión para realizar esto.",
                type: "error",

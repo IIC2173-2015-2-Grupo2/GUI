@@ -4,7 +4,7 @@
   angular.module('users')
          .service('signupService', signupService);
 
-  function signupService($http, $window, $sessionStorage) {
+  function signupService($http, $window, $sessionStorage, $rootScope) {
     var self = this;
 
     self.signup = function(userForm) {
@@ -19,6 +19,7 @@
             $sessionStorage.currentUser = { 'username' : userForm.username,
                                             'password' : userForm.password,
                                             'token' : data.token };
+            $rootScope.$emit('login');
             $window.location.href = '/#/news';
         }).error(function(data, textStatus, xhr) {
             $window.location.href = '/#/';

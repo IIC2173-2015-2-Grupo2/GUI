@@ -15,17 +15,16 @@
     return directive;
   }
 
-  navbarController.$inject = ['sessionService', 'searchService', '$rootScope'];
+  navbarController.$inject = ['$rootScope', 'sessionService', 'searchService'];
 
-  function navbarController(sessionService, searchService, $rootScope) {
+  function navbarController($rootScope, sessionService, searchService) {
     var vm = this;
     vm.session = {};
 
-    vm.tagCollection = searchService.getCurrentTags() ||
-                       searchService.getTags().then(function() { vm.tagCollection = searchService.getCurrentTags(); });
-
-    vm.providers = searchService.getCurrentNewsProviders() ||
-                   searchService.getNewsProviders().then(function() { vm.providers = searchService.getCurrentNewsProviders(); });
+    $rootScope.$on('login', function() {
+      vm.tagCollection = searchService.getCurrentTags() || searchService.getTags().then(function() { vm.tagCollection = searchService.getCurrentTags(); });
+      vm.providers = searchService.getCurrentNewsProviders() || searchService.getNewsProviders().then(function() { vm.providers = searchService.getCurrentNewsProviders(); });
+    });
 
     vm.login = function() {
       sessionService.login(vm.session)

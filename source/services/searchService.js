@@ -11,13 +11,24 @@
     vm.newsPath = 'http://arqui8.ing.puc.cl/api/v1/private/news';
     vm.searchPath = 'http://arqui8.ing.puc.cl/api/v1/private/search';
 
+    function getRequest(url, params) {
+      return $http({
+        method: 'get',
+        url: url,
+        params: params,
+        headers: {
+          'Authorization': 'Bearer ' + $sessionStorage.currentUser.token
+        }
+      });
+    }
+
     vm.getCurrentTags = function() {
       return $localStorage.currentTags;
-    }
+    };
 
     vm.getCurrentNewsProviders = function() {
       return $localStorage.currentNewsProviders;
-    }
+    };
 
     vm.getCurrentNews = function() {
       return $localStorage.currentNews;
@@ -25,12 +36,13 @@
 
     vm.clearCurrentNews = function() {
       delete $localStorage.currentNews;
-    }
+    };
 
     vm.getTags = function() {
-      return request('get', vm.tagsPath)
+      return getRequest(vm.tagsPath)
             .success(function(data) {
-              var tags = data.tags.map(function(dataTag) { return {text: dataTag.name}; })
+              console.log(data);
+              var tags = data.tags.map(function(dataTag) { return {text: dataTag.name}; });
               $localStorage.currentTags = tags;
             });
     };
@@ -68,16 +80,5 @@
               $window.location.href = '/#/news';
             });
     };
-
-    function getRequest(url, params) {
-      return $http({
-        method: 'get',
-        url: url,
-        params: params,
-        headers: {
-          'Authorization': 'Bearer ' + $sessionStorage.currentUser.token
-        }
-      });
-    }
   }
 })();

@@ -4,11 +4,10 @@
   angular.module('app')
          .service('sessionService', sessionService);
 
-  function sessionService($http, $window, $sessionStorage) {
-    var self = this;
+  function sessionService($http, $window, $sessionStorage, $rootScope) {
+    var vm = this;
 
-    // Returns a promise
-    self.login = function(userForm) {
+    vm.login = function(userForm) {
       return $http({
         method: 'POST',
         url: 'http://arqui8.ing.puc.cl/api/v1/auth/token',
@@ -18,22 +17,23 @@
           $sessionStorage.currentUser = { 'username' : userForm.username,
                                           'password' : userForm.password,
                                           'token' : data.token };
+          $rootScope.$emit('login');
           $window.location.href = '/#/news';
       }).error(function(data, textStatus, xhr) {
           $window.location.href = '/#/';
       });
     };
 
-    self.logout = function() {
+    vm.logout = function() {
       delete $sessionStorage.currentUser;
       $window.location.href = '/#/';
     };
 
-    self.loggedIn = function() {
+    vm.loggedIn = function() {
       return ($sessionStorage.currentUser !== undefined);
     };
 
-    self.currentUser = function() {
+    vm.currentUser = function() {
       return $sessionStorage.currentUser;
     };
   }
