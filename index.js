@@ -10,6 +10,10 @@ app.get('/', function(req, res) {
   res.render('public/index.html');
 });
 
+app.get('/loaderio-8ff0572e29790644ee862cedc0eea8a7', function(req, res) {
+	res.send('loaderio-8ff0572e29790644ee862cedc0eea8a7');
+});
+
 app.get('*', function(req, res) {
   res.redirect('/');
 });
