@@ -1,6 +1,6 @@
 # Newsify GUI
 
-[![Build Status](https://travis-ci.org/IIC2173-2015-2-Grupo2/GUI.svg)](https://travis-ci.org/IIC2173-2015-2-Grupo2/GUI) [![Code Climate](https://codeclimate.com/github/IIC2173-2015-2-Grupo2/GUI/badges/gpa.svg)](https://codeclimate.com/github/IIC2173-2015-2-Grupo2/GUI)
+[![Build Status](https://travis-ci.org/IIC2173-2015-2-Grupo2/GUI.svg)](https://travis-ci.org/IIC2173-2015-2-Grupo2/GUI) [![Code Climate](https://codeclimate.com/github/IIC2173-2015-2-Grupo2/GUI/badges/gpa.svg)](https://codeclimate.com/github/IIC2173-2015-2-Grupo2/GUI) [![Codacy Badge](https://api.codacy.com/project/badge/502d48e9eef445468ec70b4f549fbb64)](https://www.codacy.com/app/lopezjuripatricio/GUI)
 
 ### Framework: AngularJS ([Styleguide](https://github.com/johnpapa/angular-styleguide))
 
