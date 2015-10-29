@@ -17,8 +17,7 @@
         url: url,
         params: params,
         headers: {
-          //'Authorization': 'Bearer ' + $sessionStorage.currentUser.token
-          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6Ik5haGkiLCJleHAiOjE0NDYxNDQ5MDN9.2p9kDJD26Ld7zdNlOtzDcpaBxHzfyfNIBB3G6Fll9js'
+          'Authorization': 'Bearer ' + $sessionStorage.currentUser.token
         }
       });
     }
