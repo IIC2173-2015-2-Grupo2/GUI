@@ -56,7 +56,6 @@
     vm.getNews = function() {
       return getRequest(vm.newsPath)
             .success(function(data) {
-              console.log(data);
               $localStorage.currentNews = data.news;
             });
     };

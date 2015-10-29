@@ -11,7 +11,7 @@
       <img src="http://placehold.it/770x300&text=Newsify"
            ng-if="newsItem.image === undefined || newsItem.image === ''">
       <div class="summary">
-        {{newsItem.summary | limitTo:250:'...'}}{{newsItem.summary.length > 250 ? '...' : ''}}
+        {{newsItem.summary | limitTo:450:'...'}}{{newsItem.summary.length > 450 ? '...' : ''}}
       </div>
       <div class="clearfix"></div>
     </div>

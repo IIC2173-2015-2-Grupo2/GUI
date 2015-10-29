@@ -13,13 +13,13 @@
         url: 'http://arqui8.ing.puc.cl/api/v1/auth/token',
         data: $.param(userForm),
         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-      }).success(function(data, textStatus, xhr) {
+      }).success(function(data) {
           $sessionStorage.currentUser = { 'username' : userForm.username,
                                           'password' : userForm.password,
                                           'token' : data.token };
           $rootScope.$emit('login');
           $window.location.href = '/#/news';
-      }).error(function(data, textStatus, xhr) {
+      }).error(function() {
           $window.location.href = '/#/';
       });
     };

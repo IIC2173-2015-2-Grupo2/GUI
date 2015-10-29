@@ -1,0 +1,8 @@
+{
+  "globals": {
+    "angular": false,
+    "swal": false
+  },
+
+  "validthis": true
+}
