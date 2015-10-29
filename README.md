@@ -38,6 +38,12 @@ $ docker build --no-cache --rm --tag=newsify-gui .
 $ docker run --publish 3000:3000 --rm --name=newsify-gui newsify-gui
 ```
 
+How to load test on [loader.io](https://loader.io/):
+```sh
+# Before run, set:
+$ export LOADER_IO_TOKEN="LOADER_IO_TOKEN"
+```
+
 #### Notes:
 
 * Since this application uses CDN for some of its scripts and stylesheets (particularly AngularJS and Bootstrap), you must run the development environment while connected to the internet.

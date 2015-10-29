@@ -10,8 +10,8 @@ app.get('/', function(req, res) {
   res.render('public/index.html');
 });
 
-app.get('/loaderio-8ff0572e29790644ee862cedc0eea8a7', function(req, res) {
-	res.send('loaderio-8ff0572e29790644ee862cedc0eea8a7');
+app.get('/' + (process.env.LOADER_IO_TOKEN || 'echo'), function(req, res) {
+	res.send(process.env.LOADER_IO_TOKEN);
 });
 
 app.get('*', function(req, res) {
