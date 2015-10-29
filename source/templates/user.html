@@ -14,7 +14,8 @@
     <div class="form-group ">
       <div class="input-group">
         <div class="input-group-addon"><i class="fa fa-search"></i></div>
-        <tags-input ng-model="userCtrl.tags" max-tags={{userCtrl.maxTags}} placeholder="Add a tag (max. 3)">
+        <tags-input ng-model="userCtrl.tags" max-tags={{userCtrl.maxTags}}
+                    placeholder="Add a tag (max. 3)">
           <auto-complete source="userCtrl.tagCollection"></auto-complete>
         </tags-input>
       </div>

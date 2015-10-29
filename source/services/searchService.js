@@ -41,7 +41,6 @@
     vm.getTags = function() {
       return getRequest(vm.tagsPath)
             .success(function(data) {
-              console.log(data);
               var tags = data.tags.map(function(dataTag) { return {text: dataTag.name}; });
               $localStorage.currentTags = tags;
             });

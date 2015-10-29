@@ -22,8 +22,13 @@
     vm.session = {};
 
     $rootScope.$on('login', function() {
-      vm.tagCollection = searchService.getCurrentTags() || searchService.getTags().then(function() { vm.tagCollection = searchService.getCurrentTags(); });
-      vm.providers = searchService.getCurrentNewsProviders() || searchService.getNewsProviders().then(function() { vm.providers = searchService.getCurrentNewsProviders(); });
+      vm.tagCollection = searchService.getTags().then(function() {
+        vm.tagCollection = searchService.getCurrentTags();
+      });
+
+      vm.providers = searchService.getNewsProviders().then(function() {
+        vm.providers = searchService.getCurrentNewsProviders();
+      });
     });
 
     vm.login = function() {
@@ -41,13 +46,13 @@
     };
 
     vm.searchByTags = function() {
-      searchService.getNewsByTag(vm.tags).then(function(data) {
+      searchService.getNewsByTag(vm.tags).then(function() {
         $rootScope.$emit('newsChanged');
       });
     };
 
     vm.searchByProvider = function(provider) {
-      searchService.getNewsByProvider(provider).then(function(data) {
+      searchService.getNewsByProvider(provider).then(function() {
         $rootScope.$emit('newsChanged');
       });
     };

@@ -7,13 +7,11 @@
   appController.$inject = ['sessionService'];
 
   function appController(sessionService) {
-    var vm = this;
-
-    vm.loggedIn = function() {
+    this.loggedIn = function() {
       return sessionService.loggedIn();
     };
 
-    vm.currentUser = function() {
+    this.currentUser = function() {
       return sessionService.currentUser();
     };
   }
