@@ -7,8 +7,10 @@
   function userController($sessionStorage) {
     var vm = this;
     vm.username = $sessionStorage.currentUser.username;
-    vm.tagCollection = [{text: "Deportes"}, {text:"Musica"}, {text:"Salud"},{text:"Internacional"}];
-    //TODO incorporar nueva forma de límitar inputs
+    vm.tagCollection = [{text: "Deportes"},
+                        {text:"Musica"},
+                        {text:"Salud"},
+                        {text:"Internacional"}];
     vm.maxTags = 3;
     vm.userTags = $sessionStorage.currentUser.tags;
     vm.submit = function(){
