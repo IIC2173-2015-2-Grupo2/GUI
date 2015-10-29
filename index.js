@@ -11,7 +11,9 @@ app.get('/', function(req, res) {
 });
 
 app.get('/' + (process.env.LOADER_IO_TOKEN || 'echo'), function(req, res) {
-	res.send(process.env.LOADER_IO_TOKEN);
+  var filename = process.env.LOADER_IO_TOKEN + ".txt";
+  res.set({"Content-Disposition":"attachment; filename=\"" + filename + "\""});
+  res.send(process.env.LOADER_IO_TOKEN);
 });
 
 app.get('*', function(req, res) {
