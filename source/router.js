@@ -24,14 +24,14 @@
   angular.module('app').run(authentication);
 
   function authentication($rootScope, $location, $sessionStorage) {
-    $rootScope.$on( "$routeChangeStart", function(event, next, current) {
-      if (($location.path() !== '/' && $location.path() !== '') &&
-           $sessionStorage.currentUser === undefined ) {
-        $location.path( '/' );
-        swal({ title: "Debes iniciar sesión para realizar esto.",
-               type: "error",
-               timer: 3500});
-      }
-    });
+    // $rootScope.$on( "$routeChangeStart", function(event, next, current) {
+    //   if (($location.path() !== '/' && $location.path() !== '') &&
+    //        $sessionStorage.currentUser === undefined ) {
+    //     $location.path( '/' );
+    //     swal({ title: "Debes iniciar sesión para realizar esto.",
+    //            type: "error",
+    //            timer: 3500});
+    //   }
+    // });
   }
 })();
