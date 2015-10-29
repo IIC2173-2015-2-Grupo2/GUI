@@ -25,7 +25,7 @@
          <div class="form-group">
            <div class="input-group">
              <div class="input-group-addon"><i class="fa fa-search"></i></div>
-             <tags-input ng-model="navbarCtrl.tags">
+             <tags-input ng-model="navbarCtrl.tags" placeholder="Search by tag...">
                <auto-complete source="navbarCtrl.tagCollection"></auto-complete>
              </tags-input>
            </div>
@@ -113,17 +113,15 @@
         </button>
       </div>
 
-      <div class="collapse navbar-collapse center-align" id="sub-navbar">
-        <div class="">
-          <ul class="nav navbar-nav">
-            <li ng-repeat="provider in navbarCtrl.providers">
-              <a class="btn btn-link"
-                 ng-click="navbarCtrl.searchByProvider(provider.name)">
-                {{provider.name}}
-              </a>
-            </li>
-          </ul>
-        </div>
+      <div class="collapse navbar-collapse" id="sub-navbar">
+        <ul class="nav navbar-nav">
+          <li ng-repeat="provider in navbarCtrl.providers">
+            <a class="btn btn-link"
+               ng-click="navbarCtrl.searchByProvider(provider.name)">
+              {{provider.name}}
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
   </div>

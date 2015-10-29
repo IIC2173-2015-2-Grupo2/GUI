@@ -41,7 +41,6 @@
     vm.getTags = function() {
       return getRequest(vm.tagsPath)
             .success(function(data) {
-              console.log(data);
               var tags = data.tags.map(function(dataTag) { return {text: dataTag.name}; });
               $localStorage.currentTags = tags;
             });
@@ -57,6 +56,7 @@
     vm.getNews = function() {
       return getRequest(vm.newsPath)
             .success(function(data) {
+              console.log(data);
               $localStorage.currentNews = data.news;
             });
     };

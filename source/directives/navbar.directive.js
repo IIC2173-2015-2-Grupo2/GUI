@@ -41,13 +41,13 @@
     };
 
     vm.searchByTags = function() {
-      searchService.getNewsByTag(vm.tags).then(function(data) {
+      searchService.getNewsByTag(vm.tags).then(function() {
         $rootScope.$emit('newsChanged');
       });
     };
 
     vm.searchByProvider = function(provider) {
-      searchService.getNewsByProvider(provider).then(function(data) {
+      searchService.getNewsByProvider(provider).then(function() {
         $rootScope.$emit('newsChanged');
       });
     };
