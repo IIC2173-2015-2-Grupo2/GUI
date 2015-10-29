@@ -1,8 +1,15 @@
-var gulp    = require('gulp'),
-    jshint  = require('gulp-jshint'),
-    sass    = require('gulp-sass'),
-    connect = require('gulp-connect'),
-    concat  = require('gulp-concat');
+var gulp        = require('gulp'),
+    jshint      = require('gulp-jshint'),
+    connect     = require('gulp-connect'),
+    concat      = require('gulp-concat'),
+    rename      = require('gulp-rename'),
+    ngmin       = require('gulp-ngmin'),
+    uglify      = require('gulp-uglify'),
+    ngAnnotate  = require('gulp-ng-annotate'),
+    minifyHTML  = require('gulp-minify-html'),
+    sass        = require('gulp-sass'),
+    minifyCss   = require('gulp-minify-css'),
+    uglifycss   = require('gulp-uglifycss');
 
 // define the default task and add the watch task to it
 gulp.task('default', ['build', 'connect', 'watch']);
@@ -13,16 +20,30 @@ gulp.task('build', ['concat', 'build-css', 'jshint']);
 gulp.task('concat', ['move-templates'], function () {
   gulp.src(['source/**/modules.js', 'source/**/*.js'])
     .pipe(concat('app.js'))
+    .pipe(ngmin())
+    .pipe(ngAnnotate())
+    .pipe(uglify())
+    .pipe(rename({suffix: '.min'}))
     .pipe(gulp.dest('public'));
 });
 
 gulp.task('move-templates', function() {
-  gulp.src(['source/templates/**/*']).pipe(gulp.dest('public/templates'));
+  var opts = {
+    conditionals: true,
+    spare: true
+  };
+
+  gulp.src(['source/templates/**/*'])
+      .pipe(minifyHTML(opts))
+      .pipe(gulp.dest('public/templates'));
 });
 
 gulp.task('build-css', function() {
   return gulp.src('source/assets/scss/**/*.scss')
     .pipe(sass())
+    .pipe(minifyCss({compatibility: 'ie8'}))
+    .pipe(uglifycss())
+    .pipe(rename({suffix: '.min'}))
     .pipe(gulp.dest('public/assets/stylesheets'));
 });
 
