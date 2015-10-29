@@ -10,7 +10,7 @@ app.get('/', function(req, res) {
   res.render('public/index.html');
 });
 
-app.get('/' + (process.env.LOADER_IO_TOKEN || 'echo'), function(req, res) {
+app.get('/' + (process.env.LOADER_IO_TOKEN || 'echo'), function(req, res) {
   var filename = process.env.LOADER_IO_TOKEN + ".txt";
   res.set({"Content-Disposition":"attachment; filename=\"" + filename + "\""});
   res.send(process.env.LOADER_IO_TOKEN);
