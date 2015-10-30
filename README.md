@@ -8,7 +8,8 @@
 
 Make sure you have NodeJS 4.x.x and npm 3.3.4 installed.
 
-Then, check if you have gulp installed. If you do not have it, run the following command:
+Then, check if you have gulp installed. If you do not have it, run the following
+command:
 
 ```sh
 $ npm install --global gulp
@@ -20,13 +21,21 @@ And install all of the dependencies via
 $ npm install
 ```
 
-In order to compile `scss` into `css`, to start the *watch* tasks of gulp, and start the local server just visit the application directory and:
+In order to start the *watch* tasks of gulp, just visit the application
+directory and:
+
+```sh
+$ gulp
+```
+
+Finally, in order to start the local server, run the following in your terminal:
 
 ```sh
 $ npm start
 ```
 
-You should now be able to open your browser and visit `http://localhost:8080` to begin using the application.
+You should now be able to open your browser and visit `http://localhost:3000` to
+begin using the application.
 
 #### Docker
 
@@ -46,4 +55,6 @@ $ export LOADER_IO_TOKEN="LOADER_IO_TOKEN"
 
 #### Notes:
 
-* Since this application uses CDN for some of its scripts and stylesheets (particularly AngularJS and Bootstrap), you must run the development environment while connected to the internet.
+* Since this application uses CDN for some of its scripts and stylesheets
+(particularly AngularJS and Bootstrap), you must run the development environment
+while connected to the internet.
