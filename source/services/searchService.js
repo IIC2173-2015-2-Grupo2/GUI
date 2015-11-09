@@ -22,25 +22,29 @@
       });
     }
 
-    vm.getCurrentTags = function() {
-      return $localStorage.currentTags;
-    };
-
-    vm.getCurrentNewsProviders = function() {
-      return $localStorage.currentNewsProviders;
-    };
-
     vm.getCurrentNews = function() {
       return $localStorage.currentNews;
     };
 
-    vm.getCurrentFilter = function() {
-      return $localStorage.currentFilter;
+    vm.getCurrentPage = function() {
+      return $localStorage.currentPage || 0;
     };
 
     vm.setCurrentNewsAndPage = function(news, page) {
       $localStorage.currentNews = news;
       $localStorage.currentPage = page;
+    };
+
+    vm.getTagList = function() {
+      return $localStorage.tagList;
+    };
+
+    vm.getNewsProviderList = function() {
+      return $localStorage.newsProviderList;
+    };
+
+    vm.getCurrentFilter = function() {
+      return $localStorage.currentFilter;
     };
 
     vm.setCurrentFilter = function(queryTags, queryProviders) {
@@ -61,11 +65,6 @@
       }
 
       $localStorage.currentFilter = filter;
-      return filter;
-    };
-
-    vm.getCurrentPage = function() {
-      return $localStorage.currentPage || 0;
     };
 
     vm.clearCurrentNews = function() {
@@ -80,7 +79,7 @@
               var tags = data.tags.map(function(dataTag) {
                 return {text: dataTag.name};
               });
-              $localStorage.currentTags = tags;
+              $localStorage.tagList = tags;
             });
     };
 
@@ -90,7 +89,7 @@
               var newsProviders = data.news_providers.map(function(dataProvider) {
                 return {text: dataProvider.name};
               });
-              $localStorage.currentNewsProviders = newsProviders;
+              $localStorage.newsProviderList = newsProviders;
             });
     };
 

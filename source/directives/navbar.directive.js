@@ -23,11 +23,11 @@
 
     $rootScope.$on('login', function() {
       searchService.getTags().then(function() {
-        vm.tagCollection = searchService.getCurrentTags();
+        vm.tagCollection = searchService.getTagList();
       });
 
       searchService.getNewsProviders().then(function() {
-        vm.providerCollection = searchService.getCurrentNewsProviders();
+        vm.providerCollection = searchService.getNewsProviderList();
       });
     });
 
