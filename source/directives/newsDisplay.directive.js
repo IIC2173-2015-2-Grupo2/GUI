@@ -30,7 +30,7 @@
         vm.newsItems = searchService.getNewsByQuery(currentFilter, page);
       }
 
-      // vm.newsItems is a promise.
+      // vm.newsItems is still a promise.
       vm.newsItems.then(function() {
         vm.newsItems = searchService.getCurrentNews();
         vm.currentPage = searchService.getCurrentPage();
