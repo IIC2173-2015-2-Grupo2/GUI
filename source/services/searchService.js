@@ -62,7 +62,7 @@
 
       $localStorage.currentFilter = filter;
       return filter;
-    }
+    };
 
     vm.getCurrentPage = function() {
       return $localStorage.currentPage || 0;
@@ -97,7 +97,7 @@
     vm.getNews = function(page) {
       return getRequest(vm.newsPath, { 'page': page })
             .success(function(data) {
-              vm.setCurrentNewsAndPage(data.news, page)
+              vm.setCurrentNewsAndPage(data.news, page);
             });
     };
 
@@ -107,7 +107,7 @@
 
       return getRequest(vm.searchPath, params)
             .success(function(data) {
-              vm.setCurrentNewsAndPage(data.news, page)
+              vm.setCurrentNewsAndPage(data.news, page);
             });
     };
   }
