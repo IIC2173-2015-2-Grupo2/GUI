@@ -125,15 +125,19 @@
             </div>
           </div>
 
-          <button type="submit" class="btn btn-default"
-                  ng-disabled="!searchForm.$valid">
-                  Buscar
-          </button>
+          <div class="center-align">
+            <div class="form-group">
+              <button type="submit" class="btn btn-default"
+                      ng-disabled="!searchForm.$valid">
+                      Buscar
+              </button>
 
-          <button type="button" class="btn btn-default"
-                  ng-click="navbarCtrl.clearSearch()">
-                  Quitar Filtro
-          </button>
+              <button type="button" class="btn btn-default"
+                      ng-click="navbarCtrl.clearSearch()">
+                      Quitar Filtro
+              </button>
+            </div>
+          </div>
         </form>
       </div>
     </div>
