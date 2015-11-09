@@ -15,7 +15,6 @@
         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
       }).success(function(data) {
           $sessionStorage.currentUser = { 'username' : userForm.username,
-                                          'password' : userForm.password,
                                           'token' : data.token };
           $rootScope.$emit('login');
           $window.location.href = '/#/news';

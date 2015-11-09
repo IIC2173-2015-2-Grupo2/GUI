@@ -42,15 +42,15 @@
 
     vm.clearSearch = function() {
       searchService.clearCurrentNews();
-      finishSearch();
+      emitSearch();
     };
 
     vm.searchByQuery = function() {
       searchService.setCurrentFilter(vm.queryTags, vm.queryProviders);
-      finishSearch();
+      emitSearch();
     };
 
-    function finishSearch() {
+    function emitSearch() {
       $('#search-modal').modal('hide');
       $rootScope.$emit('newsChanged');
     }
