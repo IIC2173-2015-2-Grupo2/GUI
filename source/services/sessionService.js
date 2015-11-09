@@ -4,7 +4,7 @@
   angular.module('app')
          .service('sessionService', sessionService);
 
-  function sessionService($http, $window, $sessionStorage, $rootScope) {
+  function sessionService($http, $window, $sessionStorage, $localStorage, $rootScope) {
     var vm = this;
 
     vm.login = function(userForm) {
@@ -25,7 +25,8 @@
     };
 
     vm.logout = function() {
-      delete $sessionStorage.currentUser;
+      $sessionStorage.$reset();
+      $localStorage.$reset();
       $window.location.href = '/#/';
     };
 

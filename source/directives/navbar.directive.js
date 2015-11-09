@@ -22,12 +22,12 @@
     vm.session = {};
 
     $rootScope.$on('login', function() {
-      vm.tagCollection = searchService.getTags().then(function() {
+      searchService.getTags().then(function() {
         vm.tagCollection = searchService.getCurrentTags();
       });
 
-      vm.providers = searchService.getNewsProviders().then(function() {
-        vm.providers = searchService.getCurrentNewsProviders();
+      searchService.getNewsProviders().then(function() {
+        vm.providerCollection = searchService.getCurrentNewsProviders();
       });
     });
 
@@ -42,19 +42,17 @@
 
     vm.clearSearch = function() {
       searchService.clearCurrentNews();
+      finishSearch();
+    };
+
+    vm.searchByQuery = function() {
+      searchService.setCurrentFilter(vm.queryTags, vm.queryProviders);
+      finishSearch();
+    };
+
+    function finishSearch() {
+      $('#search-modal').modal('hide');
       $rootScope.$emit('newsChanged');
-    };
-
-    vm.searchByTags = function() {
-      searchService.getNewsByTag(vm.tags).then(function() {
-        $rootScope.$emit('newsChanged');
-      });
-    };
-
-    vm.searchByProvider = function(provider) {
-      searchService.getNewsByProvider(provider).then(function() {
-        $rootScope.$emit('newsChanged');
-      });
-    };
+    }
   }
 })();

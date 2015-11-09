@@ -18,31 +18,6 @@
         </li>
       </ul>
 
-      <div class="navbar-left">
-        <form name="searchForm" role="search" class="navbar-form navbar-left"
-              ng-if="appCtrl.loggedIn()"
-              ng-submit="searchForm.$valid && navbarCtrl.searchByTags()" novalidate>
-          <div class="form-group">
-            <div class="input-group">
-              <div class="input-group-addon"><i class="fa fa-search"></i></div>
-              <tags-input ng-model="navbarCtrl.tags" placeholder="Search by tag...">
-                <auto-complete source="navbarCtrl.tagCollection"></auto-complete>
-              </tags-input>
-            </div>
-
-            <button type="submit" class="btn btn-default"
-                    ng-disabled="!searchForm.$valid">
-                    Buscar
-            </button>
-
-            <button type="button" class="btn btn-default"
-                    ng-click="navbarCtrl.clearSearch()">
-                    Quitar Filtro
-            </button>
-          </div>
-        </form>
-      </div>
-
       <div class="navbar-right">
         <form name="loginForm" class="navbar-form"
               ng-submit="loginForm.$valid && navbarCtrl.login()"
@@ -77,6 +52,13 @@
         <div ng-if="appCtrl.loggedIn()">
           <ul class="nav navbar-nav">
             <li>
+              <a href="/#/news" data-toggle="modal" data-target="#search-modal"
+                      ng-if="appCtrl.loggedIn()">
+                Buscar...
+              </a>
+            </li>
+
+            <li>
               <a href="/#/news">
                 Noticias
               </a>
@@ -99,30 +81,6 @@
       </div>
     </div>
   </div>
-
-  <div class="navbar-inverse" ng-if="appCtrl.loggedIn()">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#sub-navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-      </div>
-
-      <div class="collapse navbar-collapse" id="sub-navbar">
-        <ul class="nav navbar-nav">
-          <li ng-repeat="provider in navbarCtrl.providers">
-            <a class="btn btn-link"
-               ng-click="navbarCtrl.searchByProvider(provider.name)">
-              {{provider.name}}
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
 </nav>
 
 <div class="modal fade" id="signup-modal" tabindex="-1" role="dialog" aria-labelledby="signup" aria-hidden="true">
@@ -134,6 +92,49 @@
       </div>
       <div class="modal-body">
         <user-signup></user-signup>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="search-modal" tabindex="-1" role="dialog" aria-labelledby="querySearch" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Búsqueda</h4>
+      </div>
+      <div class="modal-body">
+        <form name="searchForm" role="search"
+              ng-submit="searchForm.$valid && navbarCtrl.searchByQuery()" novalidate>
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-addon"><i class="fa fa-search"></i></div>
+              <tags-input ng-model="navbarCtrl.queryTags" placeholder="Search by tag...">
+                <auto-complete source="navbarCtrl.tagCollection"></auto-complete>
+              </tags-input>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-addon"><i class="fa fa-search"></i></div>
+              <tags-input ng-model="navbarCtrl.queryProviders" placeholder="Search by provider...">
+                <auto-complete source="navbarCtrl.providerCollection"></auto-complete>
+              </tags-input>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-default"
+                  ng-disabled="!searchForm.$valid">
+                  Buscar
+          </button>
+
+          <button type="button" class="btn btn-default"
+                  ng-click="navbarCtrl.clearSearch()">
+                  Quitar Filtro
+          </button>
+        </form>
       </div>
     </div>
   </div>

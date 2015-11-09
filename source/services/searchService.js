@@ -34,14 +34,52 @@
       return $localStorage.currentNews;
     };
 
+    vm.getCurrentFilter = function() {
+      return $localStorage.currentFilter;
+    };
+
+    vm.setCurrentNewsAndPage = function(news, page) {
+      $localStorage.currentNews = news;
+      $localStorage.currentPage = page;
+    };
+
+    vm.setCurrentFilter = function(queryTags, queryProviders) {
+      delete $localStorage.currentPage;
+      delete $localStorage.currentFilter;
+      var filter = {};
+
+      if (queryTags === undefined && queryProviders === undefined) {
+        return vm.getNews(0);
+      } else {
+        if (queryTags !== undefined) {
+          filter.tags = queryTags.map(function(s) { return s.text; });
+        }
+
+        if (queryProviders !== undefined) {
+          filter.providers = queryProviders.map(function(s) { return s.text; });
+        }
+      }
+
+      $localStorage.currentFilter = filter;
+      return filter;
+    }
+
+    vm.getCurrentPage = function() {
+      return $localStorage.currentPage || 0;
+    };
+
     vm.clearCurrentNews = function() {
       delete $localStorage.currentNews;
+      delete $localStorage.currentPage;
+      delete $localStorage.currentFilter;
     };
 
     vm.getTags = function() {
       return getRequest(vm.tagsPath)
             .success(function(data) {
-              var tags = data.tags.map(function(dataTag) { return {text: dataTag.name}; });
+              var tags = data.tags.map(function(dataTag) {
+                return {text: dataTag.name};
+              });
               $localStorage.currentTags = tags;
             });
     };
@@ -49,34 +87,27 @@
     vm.getNewsProviders = function() {
       return getRequest(vm.newsProvidersPath)
             .success(function(data) {
-              $localStorage.currentNewsProviders = data.news_providers;
+              var newsProviders = data.news_providers.map(function(dataProvider) {
+                return {text: dataProvider.name};
+              });
+              $localStorage.currentNewsProviders = newsProviders;
             });
     };
 
-    vm.getNews = function() {
-      return getRequest(vm.newsPath)
+    vm.getNews = function(page) {
+      return getRequest(vm.newsPath, { 'page': page })
             .success(function(data) {
-              $localStorage.currentNews = data.news;
+              vm.setCurrentNewsAndPage(data.news, page)
             });
     };
 
-    vm.getNewsByTag = function(search) {
-      var query = search.map(function(s) {
-        return s.text;
-      });
+    vm.getNewsByQuery = function(filters, page) {
+      var params = filters;
+      params.page = page;
 
-      return getRequest(vm.searchPath, { 'tags': query })
+      return getRequest(vm.searchPath, params)
             .success(function(data) {
-              $localStorage.currentNews = data.news;
-              $window.location.href = '/#/news';
-            });
-    };
-
-    vm.getNewsByProvider = function(provider) {
-      return getRequest(vm.searchPath, { 'providers': provider })
-            .success(function(data) {
-              $localStorage.currentNews = data.news;
-              $window.location.href = '/#/news';
+              vm.setCurrentNewsAndPage(data.news, page)
             });
     };
   }

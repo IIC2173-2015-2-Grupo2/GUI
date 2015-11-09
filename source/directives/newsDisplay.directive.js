@@ -19,17 +19,28 @@
 
   function newsDisplayController(searchService, $rootScope) {
     var vm = this;
-    updateNews();
+    vm.currentPage = searchService.getCurrentPage();
+
+    vm.updateNews = function(page) {
+      var currentFilter = searchService.getCurrentFilter();
+
+      if (currentFilter === undefined) {
+        vm.newsItems = searchService.getNews(page);
+      } else {
+        vm.newsItems = searchService.getNewsByQuery(currentFilter, page);
+      }
+
+      // vm.newsItems is a promise.
+      vm.newsItems.then(function() {
+        vm.newsItems = searchService.getCurrentNews();
+        vm.currentPage = searchService.getCurrentPage();
+      });
+    };
+
+    vm.updateNews(vm.currentPage);
 
     $rootScope.$on('newsChanged', function() {
-      updateNews();
+      vm.updateNews();
     });
-
-    function updateNews() {
-      vm.newsItems = searchService.getCurrentNews() ||
-                     searchService.getNews().then(function() {
-                       vm.newsItems = searchService.getCurrentNews();
-                     });
-    }
   }
 })();
