@@ -21,16 +21,6 @@
     var vm = this;
     vm.session = {};
 
-    $rootScope.$on('login', function() {
-      searchService.getTags().then(function() {
-        vm.tagCollection = searchService.getTagList();
-      });
-
-      searchService.getNewsProviders().then(function() {
-        vm.providerCollection = searchService.getNewsProviderList();
-      });
-    });
-
     vm.login = function() {
       sessionService.login(vm.session)
                     .then(vm.session = {});
@@ -54,5 +44,19 @@
       $('#search-modal').modal('hide');
       $rootScope.$emit('newsChanged');
     }
+
+    $rootScope.$on('login', function() {
+      searchService.getTags().then(function() {
+        vm.tagCollection = searchService.getTagList();
+      });
+
+      searchService.getNewsProviders().then(function() {
+        vm.providerCollection = searchService.getNewsProviderList();
+      });
+    });
+
+    $rootScope.$on('logout', function() {
+      vm.logout();
+    });
   }
 })();

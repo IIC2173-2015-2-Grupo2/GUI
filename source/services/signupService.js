@@ -19,16 +19,14 @@
                                             'token' : data.token };
             $rootScope.$emit('login');
             $window.location.href = '/#/news';
-        }).error(function() {
-            swal({title: 'Hubo un error al crear tu cuenta.',
-                type: 'error',
-                timer: 3500});
+        }).error(function(data) {
+            console.log(data);
+            swal({title: 'Error creating your account.', type: 'error'});
             $window.location.href = '/#/';
         });
       } else {
         swal({title: 'Your password and its confirmation must be the same.',
-              type: 'error',
-              timer: 3500});
+              type: 'error'});
       }
     };
   }

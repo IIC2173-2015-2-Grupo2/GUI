@@ -19,6 +19,7 @@
           $rootScope.$emit('login');
           $window.location.href = '/#/news';
       }).error(function() {
+          swal({title: 'Error signing in.', type: 'error'});
           $window.location.href = '/#/';
       });
     };

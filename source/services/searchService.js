@@ -4,7 +4,7 @@
   angular.module('news')
          .service('searchService', searchService);
 
-  function searchService($http, $window, $sessionStorage, $localStorage) {
+  function searchService($http, $window, $sessionStorage, $localStorage, $rootScope) {
     var vm = this;
     vm.tagsPath = 'http://arqui8.ing.puc.cl/api/v1/private/tags';
     vm.newsProvidersPath = 'http://arqui8.ing.puc.cl/api/v1/private/news_providers';
@@ -19,6 +19,9 @@
         headers: {
           'Authorization': 'Bearer ' + $sessionStorage.currentUser.token
         }
+      }).error(function() {
+        $rootScope.$emit('logout');
+        swal({title: 'Error. Please login again.', type: 'error'});
       });
     }
 
