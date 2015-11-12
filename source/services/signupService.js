@@ -20,7 +20,6 @@
             $rootScope.$emit('login');
             $window.location.href = '/#/news';
         }).error(function(data) {
-            console.log(data);
             swal({title: 'Error creating your account.', type: 'error'});
             $window.location.href = '/#/';
         });
