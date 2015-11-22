@@ -51,7 +51,7 @@
       });
 
       searchService.getNewsProviders().then(function() {
-        vm.providerCollection = searchService.getNewsProviderList();
+        vm.providerCollection = searchService.getProviderList();
       });
     });
 

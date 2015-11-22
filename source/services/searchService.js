@@ -42,8 +42,8 @@
       return $localStorage.tagList;
     };
 
-    vm.getNewsProviderList = function() {
-      return $localStorage.newsProviderList;
+    vm.getProviderList = function() {
+      return $localStorage.providerList;
     };
 
     vm.getCurrentFilter = function() {
@@ -79,21 +79,19 @@
     vm.getTags = function() {
       return getRequest(vm.tagsPath)
             .success(function(data) {
-              var tags = data.tags.map(function(dataTag) {
-                return {text: dataTag.name};
-              });
-              $localStorage.tagList = tags;
+              $localStorage.tagList = data.tags.map(vm.tagBuilder);
             });
     };
 
     vm.getNewsProviders = function() {
       return getRequest(vm.newsProvidersPath)
             .success(function(data) {
-              var newsProviders = data.news_providers.map(function(dataProvider) {
-                return {text: dataProvider.name};
-              });
-              $localStorage.newsProviderList = newsProviders;
+              $localStorage.providerList = data.news_providers.map(vm.tagBuilder);
             });
+    };
+
+    vm.tagBuilder = function(singleData) {
+      return { text: singleData.name };
     };
 
     vm.getNews = function(page) {

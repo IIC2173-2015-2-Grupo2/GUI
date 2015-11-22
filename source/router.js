@@ -13,11 +13,6 @@
         controllerAs: 'appCtrl',
         templateUrl: 'templates/news/news.html',
       })
-      .when('/user',{
-        controller: 'userController',
-        controllerAs: 'userCtrl',
-        templateUrl: 'templates/user.html',
-      })
       .otherwise({redirectTo: '/' });
   }
 
