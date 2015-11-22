@@ -157,10 +157,14 @@ h1 {
 
     .li-head {
       margin-bottom: 10px;
+      text-align: justify;
+      text-justify: inter-word;
     }
 
     .li-summary {
       display: block;
+      text-align: justify;
+      text-justify: inter-word;
       margin-bottom: 10px;
     }
 
