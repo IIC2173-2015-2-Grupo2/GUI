@@ -20,22 +20,26 @@
   </div>
 </h2>
 
-<div class="row">
-  <div class="col-xs-12 col-md-6" ng-repeat="newsItem in newsDisplayCtrl.newsItems">
-    <div class="thumbnail">
-      <h4 class="btn-primary">
-        <a ng-href="{{newsItem.url}}" target="blank">
-          {{newsItem.title | limitTo:55:'...'}}{{newsItem.title.length > 55 ? '...' : ''}}
-        </a>
-      </h4>
-      <img src="{{newsItem.image}}" alt="..."
-           ng-if="newsItem.image !== undefined && newsItem.image !== ''">
-      <img src="http://placehold.it/770x300&text=Newsify"
-           ng-if="newsItem.image === undefined || newsItem.image === ''">
-      <div class="summary">
-        {{newsItem.summary}}
+<ul class="list img-list">
+  <li ng-repeat="newsItem in newsDisplayCtrl.newsItems">
+    <div class="inner">
+      <div class="li-img">
+        <img src="{{newsItem.image}}" alt="..." class="img-rounded"
+             ng-if="newsItem.image !== undefined && newsItem.image !== ''">
+        <img src="http://placehold.it/770x300&text=Newsify" class="img-rounded"
+             ng-if="newsItem.image === undefined || newsItem.image === ''">
       </div>
-      <div class="clearfix"></div>
+      <div class="li-text">
+        <h4 class="li-head">
+          {{newsItem.title}}
+        </h4>
+        <p class="li-summary">
+          {{newsItem.body | limitTo:300:'...'}}{{newsItem.body.length > 300 ? '...' : ''}}
+        </p>
+        <a ng-href="{{newsItem.url}}" target="blank" class="li-action">
+          Read More
+        </a>
+      </div>
     </div>
-  </div>
-</div>
+  </li>
+</ul>

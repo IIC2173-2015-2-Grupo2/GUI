@@ -79,21 +79,19 @@
     vm.getTags = function() {
       return getRequest(vm.tagsPath)
             .success(function(data) {
-              var tags = data.tags.map(function(dataTag) {
-                return {text: dataTag.name};
-              });
-              $localStorage.tagList = tags;
+              $localStorage.tagList = data.tags.map(vm.tagBuilder(tag));
             });
     };
 
     vm.getNewsProviders = function() {
       return getRequest(vm.newsProvidersPath)
             .success(function(data) {
-              var newsProviders = data.news_providers.map(function(dataProvider) {
-                return {text: dataProvider.name};
-              });
-              $localStorage.newsProviderList = newsProviders;
+              $localStorage.newsProviderList = data.news_providers.map(vm.tagBuilder(provider));
             });
+    };
+
+    vm.tagBuilder = function(singleData) {
+      return { text: singleData.name };
     };
 
     vm.getNews = function(page) {
