@@ -33,6 +33,9 @@
         <h4 class="li-head">
           {{newsItem.title}}
         </h4>
+        <p class="li-sub-head">
+          <span class="badge">{{newsItem.language}}</span> {{newsItem.source}}
+        </p>
         <p class="li-summary">
           {{newsItem.body | limitTo:300:'...'}}{{newsItem.body.length > 300 ? '...' : ''}}
         </p>
