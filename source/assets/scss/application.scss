@@ -1,10 +1,11 @@
-$invalid-color: #FA787E;
-$valid-color: #78FA89;
-$navbar-inverse-color: #AEA79F;
+$invalid-color: #fa787e;
+$valid-color: #78fa89;
+$navbar-inverse-color: #aea79f;
 
-html, body {
-  height: 100%;
+html,
+body {
   font-family: 'Roboto', sans-serif;
+  height: 100%;
   margin: 0;
   padding: 0;
 }
@@ -18,26 +19,26 @@ h1 {
 }
 
 @media only screen and (max-width: 768px) {
-  #logo {
-    transition: all 0.5s;
+  .logo {
     font-size: 7em;
+    transition: all .5s;
   }
 
-  #sub-title {
-    transition: all 0.5s;
+  .sub-title {
     font-size: 2em;
+    transition: all .5s;
   }
 }
 
 @media only screen and (min-width: 768px) {
-  #logo {
-    transition: all 0.5s;
+  .logo {
+    transition: all .5s;
     font-size: 15em;
   }
 
-  #sub-title {
-    transition: all 0.5s;
+  .sub-title {
     font-size: 3.5em;
+    transition: all .5s;
   }
 }
 
@@ -86,52 +87,53 @@ h1 {
 }
 
 .center-align {
+  align-items: center;
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
 .center-align-space-between {
+  align-items: center;
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 
 .center-align-space-around {
+  align-items: center;
   display: flex;
   justify-content: space-around;
-  align-items: center;
 }
 
-#wrapper {
-  min-height:100%;
-  position:relative;
+.wrapper {
+  position: relative;
+  min-height: 100%;
 }
 
-#content {
-  padding-bottom: 50px; /* Height of the footer element */
+.content {
+  padding-bottom: 50px;
 }
 
-#footer {
+.footer {
+  bottom: 0;
+  color: #ffffff;
+  font-size: 1.25em;
+  height: 50px;
+  left: 0;
   position: absolute;
   width: 100%;
-  height: 50px;
-  color: white;
-  font-size: 1.25em;
-  bottom: 0;
-  left: 0;
 
-  a, a:visited {
-    color: white;
+  a,
+  a:visited {
+    color: #ffffff;
   }
 }
 
 .list.img-list {
   li {
+    border-bottom: 1px solid #cccccc;
+    border-collapse: collapse;
     display: table;
     width: 100%;
-    border-bottom: 1px solid #ccc;
-    border-collapse: collapse;
 
     .inner {
       display: table-row;
@@ -140,23 +142,23 @@ h1 {
 
     .li-img {
       display: table-cell;
-      width: 40%;
-      vertical-align: middle;
       padding-right: 1em;
+      vertical-align: middle;
+      width: 40%;
+    }
 
-      img {
-        display: block;
-        width: 100%;
-        height: auto;
-        margin: 10px 0;
-      }
+    .li-img img {
+      display: block;
+      height: auto;
+      margin: 10px 0;
+      width: 100%;
     }
 
     .li-text {
       display: table-cell;
-      width: 60%;
-      vertical-align: middle;
       padding-right: 1em;
+      vertical-align: middle;
+      width: 60%;
     }
 
     .li-head {
@@ -166,15 +168,15 @@ h1 {
     }
 
     .li-sub-head {
-      color: gray;
+      color: #808080;
       font-style: italic;
     }
 
     .li-summary {
       display: block;
+      margin-bottom: 10px;
       text-align: justify;
       text-justify: inter-word;
-      margin-bottom: 10px;
     }
 
     .li-action {
@@ -183,8 +185,8 @@ h1 {
   }
 }
 
-#scroll-to-top {
+.scroll-to-top {
+  bottom: 100px;
   position: fixed;
   right: 25px;
-  bottom: 100px;
 }
