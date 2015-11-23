@@ -53,9 +53,13 @@ h1 {
       min-width: 150px;
     }
   }
+}
 
-  div.input-group {
-    margin-right: 5px;
+.input-group {
+  margin-right: 5px;
+
+  .input-group-addon {
+    height: 20px;
   }
 }
 
@@ -177,4 +181,10 @@ h1 {
       margin: 0;
     }
   }
+}
+
+#scroll-to-top {
+  position: fixed;
+  right: 25px;
+  bottom: 100px;
 }
