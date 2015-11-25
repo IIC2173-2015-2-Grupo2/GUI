@@ -1,9 +1,16 @@
 $invalid-color: #fa787e;
 $valid-color: #78fa89;
 $navbar-inverse-color: #aea79f;
+$gradient-initial: #ACBED8;
+$white: white;
+$dark-grey: #808080;
+$light-grey: #cccccc;
 
 html,
 body {
+  background: linear-gradient($gradient-initial, $white);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   font-family: 'Roboto', sans-serif;
   height: 100%;
   margin: 0;
@@ -28,16 +35,30 @@ h1 {
     font-size: 2em;
     transition: all .5s;
   }
+
+  .btn-arrow {
+    padding: 0 25px;
+    transition: all .5s;
+  }
 }
 
 @media only screen and (min-width: 768px) {
+  input {
+    max-width: 150px;
+  }
+
   .logo {
-    transition: all .5s;
     font-size: 15em;
+    transition: all .5s;
   }
 
   .sub-title {
     font-size: 3.5em;
+    transition: all .5s;
+  }
+
+  .btn-arrow {
+    padding: 0 50px;
     transition: all .5s;
   }
 }
@@ -115,7 +136,7 @@ h1 {
 
 .footer {
   bottom: 0;
-  color: #ffffff;
+  color: $white;
   font-size: 1.25em;
   height: 50px;
   left: 0;
@@ -124,13 +145,13 @@ h1 {
 
   a,
   a:visited {
-    color: #ffffff;
+    color: $white;
   }
 }
 
 .list.img-list {
   li {
-    border-bottom: 1px solid #cccccc;
+    border-bottom: 1px solid $light-grey;
     border-collapse: collapse;
     display: table;
     width: 100%;
@@ -144,21 +165,25 @@ h1 {
       display: table-cell;
       padding-right: 1em;
       vertical-align: middle;
-      width: 40%;
+      width: 30%;
     }
 
     .li-img img {
       display: block;
       height: auto;
-      margin: 10px 0;
-      width: 100%;
+      margin-bottom: 10px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 10px;
+      max-height: 200px;
+      max-width: 100%;
     }
 
     .li-text {
       display: table-cell;
       padding-right: 1em;
       vertical-align: middle;
-      width: 60%;
+      width: 70%;
     }
 
     .li-head {
@@ -168,7 +193,7 @@ h1 {
     }
 
     .li-sub-head {
-      color: #808080;
+      color: $dark-grey;
       font-style: italic;
     }
 

@@ -1,6 +1,6 @@
 <h2 class="row">
-  <div class="col-xs-4">
-    <button type="button" class="btn btn-default"
+  <div class="col-xs-4 left-align">
+    <button type="button" class="btn btn-lg btn-primary btn-arrow"
             ng-click="newsDisplayCtrl.updateNews(newsDisplayCtrl.currentPage - 1)"
             ng-class="{'hidden' : newsDisplayCtrl.currentPage === 0}">
       <i class="fa fa-long-arrow-left fa-2x"></i>
@@ -12,7 +12,7 @@
   </div>
 
   <div class="col-xs-4 right-align">
-    <button class="btn btn-default"
+    <button class="btn btn-lg btn-primary btn-arrow"
             ng-click="newsDisplayCtrl.updateNews(newsDisplayCtrl.currentPage + 1)"
             ng-class="{'hidden' : newsDisplayCtrl.newsItems.length === 0}">
       <i class="fa fa-long-arrow-right fa-2x"></i>
@@ -26,7 +26,7 @@
       <div class="li-img">
         <img src="{{newsItem.image}}" alt="..." class="img-rounded"
              ng-if="newsItem.image !== undefined && newsItem.image !== ''">
-        <img src="http://placehold.it/770x300&text=Newsify" class="img-rounded"
+        <img src="http://placehold.it/640x480&text=Newsify" class="img-rounded"
              ng-if="newsItem.image === undefined || newsItem.image === ''">
       </div>
       <div class="li-text">
