@@ -108,21 +108,33 @@
         <form name="searchForm" role="search"
               ng-submit="searchForm.$valid && navbarCtrl.searchByQuery()" novalidate>
           <div class="form-group">
-            <div class="input-group">
-              <div class="input-group-addon"><i class="fa fa-search"></i></div>
-              <tags-input ng-model="navbarCtrl.queryTags" placeholder="Search by tag...">
-                <auto-complete source="navbarCtrl.tagCollection"></auto-complete>
-              </tags-input>
-            </div>
+            <tags-input ng-model="navbarCtrl.filters.tags" placeholder="Search by tag...">
+              <auto-complete source="navbarCtrl.tagCollection"></auto-complete>
+            </tags-input>
           </div>
 
           <div class="form-group">
-            <div class="input-group">
-              <div class="input-group-addon"><i class="fa fa-search"></i></div>
-              <tags-input ng-model="navbarCtrl.queryProviders" placeholder="Search by provider...">
-                <auto-complete source="navbarCtrl.providerCollection"></auto-complete>
-              </tags-input>
-            </div>
+            <tags-input ng-model="navbarCtrl.filters.providers" placeholder="Search by provider...">
+              <auto-complete source="navbarCtrl.providerCollection"></auto-complete>
+            </tags-input>
+          </div>
+
+          <div class="form-group">
+            <tags-input ng-model="navbarCtrl.filters.categories" placeholder="Search by category...">
+              <auto-complete source="navbarCtrl.categoryCollection"></auto-complete>
+            </tags-input>
+          </div>
+
+          <div class="form-group">
+            <tags-input ng-model="navbarCtrl.filters.people" placeholder="Search by people...">
+              <auto-complete source="navbarCtrl.peopleCollection"></auto-complete>
+            </tags-input>
+          </div>
+
+          <div class="form-group">
+            <tags-input ng-model="navbarCtrl.filters.locations" placeholder="Search by location...">
+              <auto-complete source="navbarCtrl.locationCollection"></auto-complete>
+            </tags-input>
           </div>
 
           <div class="center-align">

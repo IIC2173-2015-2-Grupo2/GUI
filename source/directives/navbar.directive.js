@@ -36,7 +36,7 @@
     };
 
     vm.searchByQuery = function() {
-      searchService.setCurrentFilter(vm.queryTags, vm.queryProviders);
+      searchService.setCurrentFilter(vm.filters);
       emitSearch();
     };
 
@@ -50,8 +50,20 @@
         vm.tagCollection = searchService.getTagList();
       });
 
-      searchService.getNewsProviders().then(function() {
+      searchService.getProviders().then(function() {
         vm.providerCollection = searchService.getProviderList();
+      });
+
+      searchService.getCategories().then(function() {
+        vm.categoryCollection = searchService.getCategoryList();
+      });
+
+      searchService.getPeople().then(function() {
+        vm.peopleCollection = searchService.getPeopleList();
+      });
+
+      searchService.getLocations().then(function() {
+        vm.locationCollection = searchService.getLocationList();
       });
     });
 
