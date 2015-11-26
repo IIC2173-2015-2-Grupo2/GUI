@@ -44,14 +44,12 @@ begin using the application.
 $ docker build --no-cache --rm --tag=newsify-gui .
 
 # Run
-$ docker run --publish 3000:3000 --rm --name=newsify-gui newsify-gui
+$ docker run --publish 80:80 --rm --name=newsify-gui newsify-gui
 ```
 
-How to load test on [loader.io](https://loader.io/):
-```sh
-# Before run, set:
-$ export LOADER_IO_TOKEN="LOADER_IO_TOKEN"
-```
+##### Publish
+
+Make sure to build first with `gulp build`. Then proceed tagging.
 
 #### Notes:
 
