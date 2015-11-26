@@ -1,10 +1,9 @@
 $invalid-color: #fa787e;
 $valid-color: #78fa89;
 $navbar-inverse-color: #aea79f;
-$gradient-initial: #ACBED8;
-$white: white;
+$gradient-initial: #acbed8;
 $dark-grey: #808080;
-$light-grey: #cccccc;
+$light-grey: #ccc;
 
 .right-align {
   display: flex;
@@ -36,9 +35,9 @@ $light-grey: #cccccc;
 
 html,
 body {
-  background: linear-gradient($gradient-initial, $white);
-  background-repeat: no-repeat;
+  background: linear-gradient($gradient-initial, #fff);
   background-attachment: fixed;
+  background-repeat: no-repeat;
   font-family: 'Roboto', sans-serif;
   height: 100%;
   margin: 0;
@@ -46,8 +45,8 @@ body {
 }
 
 .wrapper {
-  position: relative;
   min-height: 100%;
+  position: relative;
 }
 
 .content {
@@ -56,7 +55,7 @@ body {
 
 .footer {
   bottom: 0;
-  color: $white;
+  color: #fff;
   font-size: 1.25em;
   height: 50px;
   left: 0;
@@ -65,7 +64,7 @@ body {
 
   a,
   a:visited {
-    color: $white;
+    color: #fff;
   }
 }
 
@@ -170,7 +169,7 @@ h1 {
       width: 30%;
     }
 
-    .li-img img {
+    img {
       display: block;
       height: auto;
       margin-bottom: 10px;
