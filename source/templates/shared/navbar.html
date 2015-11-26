@@ -39,13 +39,10 @@
 
             <button type="submit" class="btn btn-default"
                     ng-disabled="!loginForm.$valid">
-              <i class="fa fa-sign-in"></i> Entrar
-            </button>
+              <i class="fa fa-sign-in"></i> Entrar</button>
 
             <button type="button" class="btn btn-default" data-toggle="modal"
-                    data-target="#signup-modal">
-              Sign up
-            </button>
+                    data-target="#signup-modal">Sign up</button>
           </div>
         </form>
 
@@ -53,20 +50,14 @@
           <ul class="nav navbar-nav">
             <li>
               <a href="/#/news" data-toggle="modal" data-target="#search-modal"
-                      ng-if="appCtrl.loggedIn()">
-                Buscar...
-              </a>
+                 ng-if="appCtrl.loggedIn()">Buscar...</a>
             </li>
 
             <li>
-              <a href="/#/news">
-                Noticias
-              </a>
+              <a href="/#/news">Noticias</a>
             </li>
             <li>
-              <a>
-                <i class="fa fa-user"></i> {{appCtrl.currentUser().username}}
-              </a>
+              <a><i class="fa fa-user"></i> {{appCtrl.currentUser().username}}</a>
             </li>
             <li>
               <form name="logoutForm" class="navbar-form"
@@ -108,21 +99,33 @@
         <form name="searchForm" role="search"
               ng-submit="searchForm.$valid && navbarCtrl.searchByQuery()" novalidate>
           <div class="form-group">
-            <div class="input-group">
-              <div class="input-group-addon"><i class="fa fa-search"></i></div>
-              <tags-input ng-model="navbarCtrl.queryTags" placeholder="Search by tag...">
-                <auto-complete source="navbarCtrl.tagCollection"></auto-complete>
-              </tags-input>
-            </div>
+            <tags-input ng-model="navbarCtrl.filters.tags" placeholder="Search by tag...">
+              <auto-complete source="navbarCtrl.tagCollection"></auto-complete>
+            </tags-input>
           </div>
 
           <div class="form-group">
-            <div class="input-group">
-              <div class="input-group-addon"><i class="fa fa-search"></i></div>
-              <tags-input ng-model="navbarCtrl.queryProviders" placeholder="Search by provider...">
-                <auto-complete source="navbarCtrl.providerCollection"></auto-complete>
-              </tags-input>
-            </div>
+            <tags-input ng-model="navbarCtrl.filters.providers" placeholder="Search by provider...">
+              <auto-complete source="navbarCtrl.providerCollection"></auto-complete>
+            </tags-input>
+          </div>
+
+          <div class="form-group">
+            <tags-input ng-model="navbarCtrl.filters.categories" placeholder="Search by category...">
+              <auto-complete source="navbarCtrl.categoryCollection"></auto-complete>
+            </tags-input>
+          </div>
+
+          <div class="form-group">
+            <tags-input ng-model="navbarCtrl.filters.people" placeholder="Search by people...">
+              <auto-complete source="navbarCtrl.peopleCollection"></auto-complete>
+            </tags-input>
+          </div>
+
+          <div class="form-group">
+            <tags-input ng-model="navbarCtrl.filters.locations" placeholder="Search by location...">
+              <auto-complete source="navbarCtrl.locationCollection"></auto-complete>
+            </tags-input>
           </div>
 
           <div class="center-align">

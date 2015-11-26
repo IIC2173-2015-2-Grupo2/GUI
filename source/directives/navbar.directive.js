@@ -32,11 +32,12 @@
 
     vm.clearSearch = function() {
       searchService.clearCurrentNews();
+      vm.filters = {};
       emitSearch();
     };
 
     vm.searchByQuery = function() {
-      searchService.setCurrentFilter(vm.queryTags, vm.queryProviders);
+      searchService.setCurrentFilter(vm.filters);
       emitSearch();
     };
 
@@ -46,13 +47,11 @@
     }
 
     $rootScope.$on('login', function() {
-      searchService.getTags().then(function() {
-        vm.tagCollection = searchService.getTagList();
-      });
-
-      searchService.getNewsProviders().then(function() {
-        vm.providerCollection = searchService.getProviderList();
-      });
+      vm.tagCollection = searchService.getTags();
+      vm.providerCollection = searchService.getProviders();
+      vm.categoryCollection = searchService.getCategories();
+      vm.peopleCollection = searchService.getPeople();
+      vm.locationCollection = searchService.getLocations();
     });
 
     $rootScope.$on('logout', function() {

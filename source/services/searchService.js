@@ -6,10 +6,14 @@
 
   function searchService($http, $window, $sessionStorage, $localStorage, $rootScope) {
     var vm = this;
-    vm.tagsPath = 'http://arqui8.ing.puc.cl/api/v1/private/tags';
-    vm.newsProvidersPath = 'http://arqui8.ing.puc.cl/api/v1/private/news_providers';
     vm.newsPath = 'http://arqui8.ing.puc.cl/api/v1/private/news';
     vm.searchPath = 'http://arqui8.ing.puc.cl/api/v1/private/search';
+    vm.tagsPath = 'http://arqui8.ing.puc.cl/api/v1/private/tags';
+    vm.providersPath = 'http://arqui8.ing.puc.cl/api/v1/private/news_providers';
+    vm.categoriesPath = 'http://arqui8.ing.puc.cl/api/v1/private/categories';
+    vm.peoplePath = 'http://arqui8.ing.puc.cl/api/v1/private/people';
+    vm.locationsPath = 'http://arqui8.ing.puc.cl/api/v1/private/locations';
+    $localStorage.currentPage = 0;
 
     function getRequest(url, params) {
       return $http({
@@ -30,44 +34,12 @@
     };
 
     vm.getCurrentPage = function() {
-      return $localStorage.currentPage || 0;
+      return $localStorage.currentPage;
     };
 
     vm.setCurrentNewsAndPage = function(news, page) {
       $localStorage.currentNews = news;
       $localStorage.currentPage = page;
-    };
-
-    vm.getTagList = function() {
-      return $localStorage.tagList;
-    };
-
-    vm.getProviderList = function() {
-      return $localStorage.providerList;
-    };
-
-    vm.getCurrentFilter = function() {
-      return $localStorage.currentFilter;
-    };
-
-    vm.setCurrentFilter = function(queryTags, queryProviders) {
-      delete $localStorage.currentPage;
-      delete $localStorage.currentFilter;
-      var filter = {};
-
-      if (queryTags === undefined && queryProviders === undefined) {
-        return vm.getNews(0);
-      } else {
-        if (queryTags !== undefined) {
-          filter.tags = queryTags.map(function(s) { return s.text; });
-        }
-
-        if (queryProviders !== undefined) {
-          filter.providers = queryProviders.map(function(s) { return s.text; });
-        }
-      }
-
-      $localStorage.currentFilter = filter;
     };
 
     vm.clearCurrentNews = function() {
@@ -76,39 +48,66 @@
       delete $localStorage.currentFilter;
     };
 
-    vm.getTags = function() {
-      return getRequest(vm.tagsPath)
-            .success(function(data) {
-              $localStorage.tagList = data.tags.map(vm.tagBuilder);
-            });
+    vm.getCurrentFilter = function() {
+      return $localStorage.currentFilter;
     };
 
-    vm.getNewsProviders = function() {
-      return getRequest(vm.newsProvidersPath)
-            .success(function(data) {
-              $localStorage.providerList = data.news_providers.map(vm.tagBuilder);
-            });
+    vm.setCurrentFilter = function(filters) {
+      delete $localStorage.currentPage;
+      delete $localStorage.currentFilter;
+      var newFilter = {};
+
+      function mapper(unit) { return unit.text; }
+      if (filters.tags) { newFilter.tags = filters.tags.map(mapper); }
+      if (filters.providers) { newFilter.providers = filters.providers.map(mapper); }
+      if (filters.categories) { newFilter.categories = filters.categories.map(mapper); }
+      if (filters.people) { newFilter.people = filters.people.map(mapper); }
+      if (filters.locations) { newFilter.locations = filters.locations.map(mapper); }
+
+      $localStorage.currentFilter = newFilter;
+    };
+
+    vm.getTags = function() {
+      return getRequest(vm.tagsPath)
+            .success(function(data) { $localStorage.tagList = _.uniq(data.tags.map(vm.tagBuilder), JSON.stringify); })
+            .then(function() { return $localStorage.tagList; });
+    };
+
+    vm.getProviders = function() {
+      return getRequest(vm.providersPath)
+            .success(function(data) { $localStorage.providerList = _.uniq(data.news_providers.map(vm.tagBuilder), JSON.stringify); })
+            .then(function() { return $localStorage.providerList; });
+    };
+
+    vm.getCategories = function() {
+      return getRequest(vm.categoriesPath)
+            .success(function(data) { $localStorage.categoryList = _.uniq(data.categories.map(vm.tagBuilder), JSON.stringify); })
+            .then(function() { return $localStorage.categoryList; });
+    };
+
+    vm.getPeople = function() {
+      return getRequest(vm.peoplePath)
+            .success(function(data) { $localStorage.peopleList = _.uniq(data.people.map(vm.tagBuilder), JSON.stringify); })
+            .then(function() { return $localStorage.peopleList; });
+    };
+
+    vm.getLocations = function() {
+      return getRequest(vm.locationsPath)
+            .success(function(data) { $localStorage.locationList = _.uniq(data.locations.map(vm.tagBuilder), JSON.stringify); })
+            .then(function() { return $localStorage.locationList; });
     };
 
     vm.tagBuilder = function(singleData) {
       return { text: singleData.name };
     };
 
-    vm.getNews = function(page) {
-      return getRequest(vm.newsPath, { 'page': page })
-            .success(function(data) {
-              vm.setCurrentNewsAndPage(data.news, page);
-            });
-    };
-
-    vm.getNewsByQuery = function(filters, page) {
-      var params = filters;
+    vm.getNews = function(page, filters) {
+      var params = {};
+      if (filters) { params = filters; }
       params.page = page;
 
-      return getRequest(vm.searchPath, params)
-            .success(function(data) {
-              vm.setCurrentNewsAndPage(data.news, page);
-            });
+      return getRequest(vm.newsPath, params)
+            .success(function(data) { vm.setCurrentNewsAndPage(data.news, page); });
     };
   }
 })();

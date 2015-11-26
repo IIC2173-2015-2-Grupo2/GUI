@@ -24,10 +24,10 @@
     vm.updateNews = function(page) {
       var currentFilter = searchService.getCurrentFilter();
 
-      if (currentFilter === undefined) {
-        vm.newsItems = searchService.getNews(page);
+      if (currentFilter) {
+        vm.newsItems = searchService.getNews(page, currentFilter);
       } else {
-        vm.newsItems = searchService.getNewsByQuery(currentFilter, page);
+        vm.newsItems = searchService.getNews(page);
       }
 
       // vm.newsItems is still a promise.
