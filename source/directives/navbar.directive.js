@@ -46,25 +46,11 @@
     }
 
     $rootScope.$on('login', function() {
-      searchService.getTags().then(function() {
-        vm.tagCollection = searchService.getTagList();
-      });
-
-      searchService.getProviders().then(function() {
-        vm.providerCollection = searchService.getProviderList();
-      });
-
-      searchService.getCategories().then(function() {
-        vm.categoryCollection = searchService.getCategoryList();
-      });
-
-      searchService.getPeople().then(function() {
-        vm.peopleCollection = searchService.getPeopleList();
-      });
-
-      searchService.getLocations().then(function() {
-        vm.locationCollection = searchService.getLocationList();
-      });
+      vm.tagCollection = searchService.getTags();
+      vm.providerCollection = searchService.getProviders();
+      vm.categoryCollection = searchService.getCategories();
+      vm.peopleCollection = searchService.getPeople();
+      vm.locationCollection = searchService.getLocations();
     });
 
     $rootScope.$on('logout', function() {

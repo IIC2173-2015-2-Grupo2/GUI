@@ -13,6 +13,7 @@
     vm.categoriesPath = 'http://arqui8.ing.puc.cl/api/v1/private/categories';
     vm.peoplePath = 'http://arqui8.ing.puc.cl/api/v1/private/people';
     vm.locationsPath = 'http://arqui8.ing.puc.cl/api/v1/private/locations';
+    $localStorage.currentPage = 0;
 
     function getRequest(url, params) {
       return $http({
@@ -33,7 +34,7 @@
     };
 
     vm.getCurrentPage = function() {
-      return $localStorage.currentPage || 0;
+      return $localStorage.currentPage;
     };
 
     vm.setCurrentNewsAndPage = function(news, page) {
@@ -41,28 +42,14 @@
       $localStorage.currentPage = page;
     };
 
-    vm.getTagList = function() {
-      return $localStorage.tagList || [];
-    };
-
-    vm.getProviderList = function() {
-      return $localStorage.providerList || [];
-    };
-
-    vm.getCategoryList = function() {
-      return $localStorage.categoryList || [];
-    };
-
-    vm.getPeopleList = function() {
-      return $localStorage.peopleList || [];
-    };
-
-    vm.getLocationList = function() {
-      return $localStorage.locationList || [];
+    vm.clearCurrentNews = function() {
+      delete $localStorage.currentNews;
+      delete $localStorage.currentPage;
+      delete $localStorage.currentFilter;
     };
 
     vm.getCurrentFilter = function() {
-      return $localStorage.currentFilter || [];
+      return $localStorage.currentFilter;
     };
 
     vm.setCurrentFilter = function(filters) {
@@ -80,69 +67,46 @@
       $localStorage.currentFilter = newFilter;
     };
 
-    vm.clearCurrentNews = function() {
-      delete $localStorage.currentNews;
-      delete $localStorage.currentPage;
-      delete $localStorage.currentFilter;
-    };
-
     vm.getTags = function() {
       return getRequest(vm.tagsPath)
-            .success(function(data) { vm.getHandler(data, "tags") });
+            .success(function(data) { $localStorage.tagList = _.uniq(data.tags.map(vm.tagBuilder), JSON.stringify); })
+            .then(function() { return $localStorage.tagList });
     };
 
     vm.getProviders = function() {
       return getRequest(vm.providersPath)
-            .success(function(data) { vm.getHandler(data, "providers") });
+            .success(function(data) { $localStorage.providerList = _.uniq(data.news_providers.map(vm.tagBuilder), JSON.stringify); })
+            .then(function() { return $localStorage.providerList });
     };
 
     vm.getCategories = function() {
       return getRequest(vm.categoriesPath)
-            .success(function(data) { vm.getHandler(data, "categories") });
+            .success(function(data) { $localStorage.categoryList = _.uniq(data.categories.map(vm.tagBuilder), JSON.stringify); })
+            .then(function() { return $localStorage.categoryList });
     };
 
     vm.getPeople = function() {
       return getRequest(vm.peoplePath)
-            .success(function(data) { vm.getHandler(data, "people") });
+            .success(function(data) { $localStorage.peopleList = _.uniq(data.people.map(vm.tagBuilder), JSON.stringify); })
+            .then(function() { return $localStorage.peopleList });
     };
 
     vm.getLocations = function() {
       return getRequest(vm.locationsPath)
-            .success(function(data) { vm.getHandler(data, "locations") });
+            .success(function(data) { $localStorage.locationList = _.uniq(data.locations.map(vm.tagBuilder), JSON.stringify); })
+            .then(function() { return $localStorage.locationList });
     };
 
-    vm.getHandler = function(data, type) {
-      function tagBuilder(singleData) { return { text: singleData.name }; }
-
-      switch(type) {
-        case "tags":
-            $localStorage.tagList = _.uniq(data.tags.map(tagBuilder), JSON.stringify);
-            break;
-        case "providers":
-            $localStorage.providerList = _.uniq(data.news_providers.map(tagBuilder), JSON.stringify);
-            break;
-        case "categories":
-            $localStorage.categoryList = _.uniq(data.categories.map(tagBuilder), JSON.stringify);
-            break;
-        case "people":
-            $localStorage.peopleList = _.uniq(data.people.map(tagBuilder), JSON.stringify);
-            break;
-        case "locations":
-            $localStorage.locationList = _.uniq(data.locations.map(tagBuilder), JSON.stringify);
-            break;
-      }
-    }
-
-    vm.getNews = function(page) {
-      return getRequest(vm.newsPath, { 'page': page })
-            .success(function(data) { vm.setCurrentNewsAndPage(data.news, page); });
+    vm.tagBuilder = function(singleData) {
+      return { text: singleData.name };
     };
 
-    vm.getNewsByQuery = function(filters, page) {
-      var params = filters;
+    vm.getNews = function(page, filters) {
+      var params = {};
+      if (filters) { params = filters; }
       params.page = page;
 
-      return getRequest(vm.searchPath, params)
+      return getRequest(vm.newsPath, params)
             .success(function(data) { vm.setCurrentNewsAndPage(data.news, page); });
     };
   }
