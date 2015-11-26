@@ -32,6 +32,7 @@
 
     vm.clearSearch = function() {
       searchService.clearCurrentNews();
+      vm.filters = {};
       emitSearch();
     };
 
