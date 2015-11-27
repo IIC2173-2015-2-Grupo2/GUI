@@ -36,7 +36,7 @@
       emitSearch();
     };
 
-    vm.searchByQuery = function() {
+    vm.search = function() {
       searchService.setCurrentFilter(vm.filters);
       emitSearch();
     };

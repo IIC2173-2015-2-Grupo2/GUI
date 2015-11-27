@@ -13,8 +13,7 @@
     vm.categoriesPath = 'http://arqui8.ing.puc.cl/api/v1/private/categories';
     vm.peoplePath = 'http://arqui8.ing.puc.cl/api/v1/private/people';
     vm.locationsPath = 'http://arqui8.ing.puc.cl/api/v1/private/locations';
-    vm.companiesPath = 'http://arqui8.ing.puc.cl/api/v1/private/companies'
-    $localStorage.currentPage = 0;
+    vm.companiesPath = 'http://arqui8.ing.puc.cl/api/v1/private/companies';
 
     function getRequest(url, params) {
       return $http({
@@ -35,7 +34,7 @@
     };
 
     vm.getCurrentPage = function() {
-      return $localStorage.currentPage;
+      return $localStorage.currentPage || 0;
     };
 
     vm.setCurrentNewsAndPage = function(news, page) {
@@ -110,11 +109,15 @@
     };
 
     vm.getNews = function(page, filters) {
+      var url = vm.newsPath;
       var params = {};
-      if (filters) { params = filters; }
+      if (filters) {
+        url = vm.searchPath;
+        params = filters;
+      }
       params.page = page;
 
-      return getRequest(vm.newsPath, params)
+      return getRequest(url, params)
             .success(function(data) { vm.setCurrentNewsAndPage(data.news, page); });
     };
   }

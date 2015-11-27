@@ -40,7 +40,7 @@
     vm.updateNews(vm.currentPage);
 
     $rootScope.$on('newsChanged', function() {
-      vm.updateNews();
+      vm.updateNews(0);
     });
 
     vm.scrollUp = function() {

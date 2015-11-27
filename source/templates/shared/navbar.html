@@ -97,7 +97,7 @@
       </div>
       <div class="modal-body">
         <form name="searchForm" role="search"
-              ng-submit="searchForm.$valid && navbarCtrl.searchByQuery()" novalidate>
+              ng-submit="searchForm.$valid && navbarCtrl.search()" novalidate>
           <div class="form-group">
             <tags-input ng-model="navbarCtrl.filters.tags" placeholder="Search by tag...">
               <auto-complete source="navbarCtrl.tagCollection"></auto-complete>
