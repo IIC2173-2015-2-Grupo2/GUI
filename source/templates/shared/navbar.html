@@ -128,6 +128,12 @@
             </tags-input>
           </div>
 
+          <div class="form-group">
+            <tags-input ng-model="navbarCtrl.filters.companies" placeholder="Search by company...">
+              <auto-complete source="navbarCtrl.companyCollection"></auto-complete>
+            </tags-input>
+          </div>
+
           <div class="center-align">
             <div class="form-group">
               <button type="submit" class="btn btn-default"

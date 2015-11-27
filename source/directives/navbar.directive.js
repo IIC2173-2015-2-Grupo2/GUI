@@ -47,11 +47,12 @@
     }
 
     $rootScope.$on('login', function() {
-      vm.tagCollection = searchService.getTags();
+      vm.tagCollection      = searchService.getTags();
       vm.providerCollection = searchService.getProviders();
       vm.categoryCollection = searchService.getCategories();
-      vm.peopleCollection = searchService.getPeople();
+      vm.peopleCollection   = searchService.getPeople();
       vm.locationCollection = searchService.getLocations();
+      vm.companyCollection  = searchService.getCompanies();
     });
 
     $rootScope.$on('logout', function() {

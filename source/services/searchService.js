@@ -13,6 +13,7 @@
     vm.categoriesPath = 'http://arqui8.ing.puc.cl/api/v1/private/categories';
     vm.peoplePath = 'http://arqui8.ing.puc.cl/api/v1/private/people';
     vm.locationsPath = 'http://arqui8.ing.puc.cl/api/v1/private/locations';
+    vm.companiesPath = 'http://arqui8.ing.puc.cl/api/v1/private/companies'
     $localStorage.currentPage = 0;
 
     function getRequest(url, params) {
@@ -58,11 +59,12 @@
       var newFilter = {};
 
       function mapper(unit) { return unit.text; }
-      if (filters.tags) { newFilter.tags = filters.tags.map(mapper); }
-      if (filters.providers) { newFilter.providers = filters.providers.map(mapper); }
-      if (filters.categories) { newFilter.categories = filters.categories.map(mapper); }
-      if (filters.people) { newFilter.people = filters.people.map(mapper); }
-      if (filters.locations) { newFilter.locations = filters.locations.map(mapper); }
+      if (filters.tags)       { newFilter.tags        = filters.tags.map(mapper); }
+      if (filters.providers)  { newFilter.providers   = filters.providers.map(mapper); }
+      if (filters.categories) { newFilter.categories  = filters.categories.map(mapper); }
+      if (filters.people)     { newFilter.people      = filters.people.map(mapper); }
+      if (filters.locations)  { newFilter.locations   = filters.locations.map(mapper); }
+      if (filters.companies)  { newFilter.companies   = filters.companies.map(mapper); }
 
       $localStorage.currentFilter = newFilter;
     };
@@ -95,6 +97,12 @@
       return getRequest(vm.locationsPath)
             .success(function(data) { $localStorage.locationList = _.uniq(data.locations.map(vm.tagBuilder), JSON.stringify); })
             .then(function() { return $localStorage.locationList; });
+    };
+
+    vm.getCompanies = function() {
+      return getRequest(vm.companiesPath)
+            .success(function(data) { $localStorage.companyList = _.uniq(data.companies.map(vm.tagBuilder), JSON.stringify); })
+            .then(function() { return $localStorage.companyList; });
     };
 
     vm.tagBuilder = function(singleData) {
