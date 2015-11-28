@@ -23,15 +23,7 @@
 
     vm.updateNews = function(page) {
       var currentFilter = searchService.getCurrentFilter();
-
-      if (currentFilter) {
-        vm.newsItems = searchService.getNews(page, currentFilter);
-      } else {
-        vm.newsItems = searchService.getNews(page);
-      }
-
-      // vm.newsItems is still a promise.
-      vm.newsItems.then(function() {
+      searchService.getNews(page, currentFilter).then(function() {
         vm.newsItems = searchService.getCurrentNews();
         vm.newsItems.forEach(function(newsItem) { newsItem.clicked = false; });
         vm.currentPage = searchService.getCurrentPage();
