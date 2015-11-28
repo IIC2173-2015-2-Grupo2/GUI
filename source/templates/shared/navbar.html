@@ -99,37 +99,43 @@
         <form name="searchForm" role="search"
               ng-submit="searchForm.$valid && navbarCtrl.search()" novalidate>
           <div class="form-group">
-            <tags-input ng-model="navbarCtrl.filters.tags" placeholder="Search by tag...">
+            <tags-input placeholder="Search by tag..." replace-spaces-with-dashes="false"
+                        ng-model="navbarCtrl.filters.tags">
               <auto-complete source="navbarCtrl.tagCollection"></auto-complete>
             </tags-input>
           </div>
 
           <div class="form-group">
-            <tags-input ng-model="navbarCtrl.filters.providers" placeholder="Search by provider...">
+            <tags-input placeholder="Search by provider..." replace-spaces-with-dashes="false"
+                        ng-model="navbarCtrl.filters.providers">
               <auto-complete source="navbarCtrl.providerCollection"></auto-complete>
             </tags-input>
           </div>
 
           <div class="form-group">
-            <tags-input ng-model="navbarCtrl.filters.categories" placeholder="Search by category...">
+            <tags-input placeholder="Search by category..." replace-spaces-with-dashes="false"
+                        ng-model="navbarCtrl.filters.categories">
               <auto-complete source="navbarCtrl.categoryCollection"></auto-complete>
             </tags-input>
           </div>
 
           <div class="form-group">
-            <tags-input ng-model="navbarCtrl.filters.people" placeholder="Search by people...">
+            <tags-input placeholder="Search by person..." replace-spaces-with-dashes="false"
+                        ng-model="navbarCtrl.filters.people">
               <auto-complete source="navbarCtrl.peopleCollection"></auto-complete>
             </tags-input>
           </div>
 
           <div class="form-group">
-            <tags-input ng-model="navbarCtrl.filters.locations" placeholder="Search by location...">
+            <tags-input placeholder="Search by location..." replace-spaces-with-dashes="false"
+                        ng-model="navbarCtrl.filters.locations">
               <auto-complete source="navbarCtrl.locationCollection"></auto-complete>
             </tags-input>
           </div>
 
           <div class="form-group">
-            <tags-input ng-model="navbarCtrl.filters.companies" placeholder="Search by company...">
+            <tags-input placeholder="Search by company..." replace-spaces-with-dashes="false"
+                        ng-model="navbarCtrl.filters.companies">
               <auto-complete source="navbarCtrl.companyCollection"></auto-complete>
             </tags-input>
           </div>
