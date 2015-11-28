@@ -152,7 +152,7 @@ h1 {
 
 .list.img-list {
   li {
-    border-bottom: 5px solid $light-grey;
+    border-bottom: 2px solid $dark-grey;
     border-collapse: collapse;
     display: table;
     width: 100%;
@@ -206,6 +206,7 @@ h1 {
     }
 
     .li-action {
+      cursor: pointer;
       margin: 0;
     }
   }

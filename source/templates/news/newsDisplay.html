@@ -31,16 +31,22 @@
       </div>
       <div class="li-text">
         <h4 class="li-head">
-          {{newsItem.title}}
+          <a ng-href="{{newsItem.url}}" target="_blank">
+            {{newsItem.title}}
+          </a>
         </h4>
         <p class="li-sub-head">
           <span class="badge">{{newsItem.language}}</span> {{newsItem.source}}
         </p>
-        <p class="li-summary">
+        <p class="li-summary" ng-if="!newsItem.clicked">
           {{newsItem.body | limitTo:300:'...'}}{{newsItem.body.length > 300 ? '...' : ''}}
         </p>
-        <a ng-href="{{newsItem.url}}" target="blank" class="li-action">
-          Read More
+        <p class="li-summary" ng-if="newsItem.clicked">
+          {{newsItem.body}}
+        </p>
+        <a ng-click="newsItem.clicked=!newsItem.clicked" class="li-action">
+          <span ng-if="!newsItem.clicked">Read More</span>
+          <span ng-if="newsItem.clicked">Read Less</span>
         </a>
       </div>
     </div>

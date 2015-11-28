@@ -33,6 +33,7 @@
       // vm.newsItems is still a promise.
       vm.newsItems.then(function() {
         vm.newsItems = searchService.getCurrentNews();
+        vm.newsItems.forEach(function(newsItem) { newsItem.clicked = false; });
         vm.currentPage = searchService.getCurrentPage();
       });
     };
