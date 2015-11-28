@@ -20,6 +20,7 @@
   function navbarController($rootScope, sessionService, searchService) {
     var vm = this;
     vm.session = {};
+    getLSLists();
 
     vm.login = function() {
       sessionService.login(vm.session)
@@ -44,6 +45,17 @@
     function emitSearch() {
       $('#search-modal').modal('hide');
       $rootScope.$emit('newsChanged');
+    }
+
+    function getLSLists() {
+      if (sessionService.loggedIn()) {
+        vm.tagCollection      = vm.tagCollection      || searchService.getLSTags();
+        vm.providerCollection = vm.providerCollection || searchService.getLSProviders();
+        vm.categoryCollection = vm.categoryCollection || searchService.getLSCategories();
+        vm.peopleCollection   = vm.peopleCollection   || searchService.getLSPeople();
+        vm.locationCollection = vm.locationCollection || searchService.getLSLocations();
+        vm.companyCollection  = vm.companyCollection  || searchService.getLSCompanies();
+      }
     }
 
     $rootScope.$on('login', function() {
